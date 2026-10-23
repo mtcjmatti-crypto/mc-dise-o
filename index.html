@@ -189,6 +189,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   .cat-head h3{font-size:22px}
 }
 @media (max-width:340px){.cats{grid-template-columns:1fr}}
+.cat3d .nm,.row .name,.sol h3{overflow-wrap:break-word;hyphens:auto}
 @media (min-width:721px){.cat-bar{align-items:flex-start}.cat-tabs{flex-wrap:wrap;overflow:visible}}
 
 @media (max-width:720px){
@@ -210,6 +211,22 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   .cond{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:no-preference){.btn{transition:background .15s,border-color .15s}}
+
+/* Sitio hermano */
+.sister{display:flex;gap:16px;align-items:center;padding:18px 20px;margin-bottom:20px;border:1px solid var(--line);border-radius:18px;color:var(--fg);text-decoration:none;background:rgba(255,255,255,.02)}
+.sister:hover{border-color:var(--sky)}
+.sister .txt{min-width:0;display:flex;flex-direction:column;gap:2px}
+.sister small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sister b{font-size:19px;font-weight:800;letter-spacing:-.01em}
+.sister .txt>span{color:var(--muted);font-size:15px}
+.sister .go{margin-left:auto;flex:0 0 auto;font-weight:700;color:var(--sky);white-space:nowrap}
+.mini{flex:0 0 auto;width:56px;height:56px;display:grid;place-items:center;font-weight:800;font-size:24px;letter-spacing:-.04em;position:relative;line-height:1}
+.mini-d{border-radius:50%;background:#38BDF8;color:#0F172A}
+.mini-d{font-size:22px}.mini-d::after{content:"";position:absolute;right:-4px;bottom:1px;width:14px;height:14px;border-radius:50%;background:#F8FAFC;border:3px solid #0F172A}
+.mini-c{border-radius:16px;background:#34D399;color:#052E26}
+.mini-c::after{content:"✓";position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:#F4FAF8;color:#052E26;border:3px solid #0A1F1C;font-size:11px;display:grid;place-items:center}
+@media (max-width:720px){.sister{padding:16px;gap:14px}.sister .go{display:none}.sister b{font-size:17px}}
+@media (max-width:380px){.row{grid-template-columns:minmax(0,1fr)}.row .price{text-align:left}}
 </style>
 </head>
 <body>
@@ -273,6 +290,11 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     </dl>
     <a class="btn btn-primary" href="https://wa.me/56974629597?text=Hola%20Mat%C3%ADas%2C%20quiero%20cotizar%20un%20trabajo" target="_blank" rel="noopener">Escríbeme y cotizamos</a>
   </footer>
+  <a class="sister" href="https://mtcjmatti-crypto.github.io/mc-contable/">
+    <span class="mini mini-c" aria-hidden="true">mc</span>
+    <span class="txt"><small>También de Matías Condori</small><b>MC Contable &amp; Tributario</b><span>Contabilidad, impuestos, sueldos, Operación Renta y asesoría tributaria.</span></span>
+    <span class="go" aria-hidden="true">Ver sitio →</span>
+  </a>
   <p class="foot">Valores en pesos chilenos, actualizados a octubre de 2026.</p>
 </div>
   <div class="cx-overlay" id="cx-overlay">
@@ -285,7 +307,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
 <script>
 (function(){
   var WA = '56974629597';
-  var CONTADOR_URL = ''; /* enlace al sitio de contador cuando exista */
+  var CONTADOR_URL = 'https://mtcjmatti-crypto.github.io/mc-contable/'; /* sitio de contador */
   var MKT = {embudo:1,redes:1,canva:1,anuncios:1,maps:1,marca:1};
   function rangoTipo(s){ return SOL[s].ext ? 2 : (MKT[s] ? 1 : 0); }
   var BIZ = ['emp','pyme','rest','serv'];
@@ -648,6 +670,13 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     if(encodeURIComponent(L.join('\n')).length > 3500){
       L = L.filter(function(x){ return x.indexOf('   Resuelve: ')!==0; });
       L.splice(2, 0, 'Marqué '+n+' problemas en '+Object.keys(areasDet).length+' áreas (detalle en la consulta).');
+    }
+    if(encodeURIComponent(L.join('\n')).length > 3500){
+      var num = L.filter(function(x){return /^\d+\. /.test(x);}), keep = num.slice(0,10);
+      if(num.length>10){
+        L = L.filter(function(x){ return !/^\d+\. /.test(x) || keep.indexOf(x)>-1; });
+        L.splice(L.indexOf(keep[9])+1, 0, '… y '+(num.length-10)+' más (detalle en la consulta).');
+      }
     }
     h += '<div class="actions" style="margin-top:18px"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'))+'">Cotizar con asesor</a>'+
       '<button type="button" class="btn btn-ghost" data-act="edit">Corregir respuestas</button><button type="button" class="btn btn-ghost" data-act="reset">Empezar de nuevo</button></div>';
