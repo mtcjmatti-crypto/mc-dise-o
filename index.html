@@ -85,6 +85,7 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .cx-close{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:22px;line-height:1;cursor:pointer}
 .cx-close:hover{border-color:var(--sky)}
 #cx-body>h2:first-child{padding-right:52px}
+#cx-title:focus{outline:none}
 .cx-hello{display:flex;flex-direction:column;gap:16px;padding-right:40px}
 .cx-hello .logo{width:72px;height:72px}.cx-hello .logo span{font-size:32px}.cx-hello .logo i{width:18px;height:18px;right:1px;bottom:5px;border-width:3px;border-color:var(--navy-2)}
 .cx h2{font-size:clamp(26px,4.5vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
@@ -514,7 +515,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       h = '<div class="cx-hello"><div class="logo" aria-hidden="true"><span>mc</span><i></i></div>'+
         '<h2 id="cx-title">Haz una consulta gratis y descubre qué necesitas</h2>'+
         '<p class="sub">Responde unas preguntas rápidas sobre tu negocio, tu idea o tus finanzas. Al final te digo qué problemas tienes, cómo resolverlos y cuánto costaría.</p>'+
-        '<ul class="cx-list"><li>Ventas, redes, reseñas y clientes</li><li>Finanzas, stock, despachos y personal</li><li>Trámites, impuestos, seguros y documentos</li></ul>'+
+        '<ul class="cx-list"><li>Ventas, redes, reseñas y clientes</li><li>Finanzas, stock, despachos y transporte</li><li>Personal, reservas, documentos y atención</li></ul>'+
         '<div class="actions"><button type="button" class="btn btn-primary" data-act="next">Comenzar consulta</button><button type="button" class="btn btn-ghost" data-act="skip">Omitir</button></div>'+
         '<p class="note" style="margin:0">Toma 1 minuto. Puedes volver cuando quieras con el botón flotante.</p></div>';
     } else if(st.paso===1){
@@ -605,6 +606,11 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     return h;
   }
 
+  function arriba(){
+    var t=document.getElementById('cx-title');
+    if(t){ t.setAttribute('tabindex','-1'); try{ t.focus({preventScroll:true}); }catch(e){ t.focus(); } }
+    document.getElementById('cx').scrollTop=0;
+  }
   function guardar(){
     var c=document.getElementById('cx-com'), n=document.getElementById('cx-nom');
     if(c) st.com=c.value.trim();
@@ -622,12 +628,12 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       return;
     }
     if(act==='skip'){ cerrar(false); return; }
-    if(act==='reset'){ reset(); st.paso=1; render(); return; }
-    if(act==='edit'){ st.paso=3; render(); document.getElementById('cx').scrollTop=0; return; }
+    if(act==='reset'){ reset(); st.paso=1; render(); arriba(); return; }
+    if(act==='edit'){ st.paso=3; render(); arriba(); return; }
     if(act==='next'){ guardar();
       if(st.paso===2 && st.areas.length){ st.probs = st.probs.filter(function(pid){ return st.areas.indexOf(PMAP[pid].a)>-1; }); }
-      st.paso++; render(); document.getElementById('cx').scrollTop=0; var f=body.querySelector('.opt,button'); if(f) f.focus(); return; }
-    if(act==='back'){ guardar(); st.paso--; render(); document.getElementById('cx').scrollTop=0; }
+      st.paso++; render(); arriba(); return; }
+    if(act==='back'){ guardar(); st.paso--; render(); arriba(); }
   });
 
   /* Soluciones a medida en la lista de precios */
