@@ -460,7 +460,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   function abrir(){
     ov.hidden = false; fab.hidden = true; document.body.style.overflow='hidden'; document.documentElement.style.overflow='hidden';
     if(!pushed){ try{ history.pushState({consulta:1},''); pushed=true; }catch(e){} }
-    render(); setTimeout(function(){ var b=body.querySelector('button,textarea,input'); if(b) b.focus(); },30);
+    render(); setTimeout(function(){ if(st.paso===0){ var b=body.querySelector('button'); if(b) b.focus(); } else { arriba(); } },30);
   }
   function cerrar(desdeAtras){
     guardar(); ov.hidden = true; fab.hidden = false; document.body.style.overflow=''; document.documentElement.style.overflow='';
@@ -556,7 +556,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     var nPropias = lista.filter(function(g){return !SOL[g.s].ext;}).length;
     var areasDet = {};
     st.probs.forEach(function(pid){ areasDet[AMAP[PMAP[pid].a].t]=1; });
-    var h = '<h2 id="cx-title">'+nombre+'detecté '+n+' problema'+(n>1?'s':'')+(nPropias?' y te puedo ayudar con '+nPropias+' solucion'+(nPropias>1?'es':''):'')+'</h2>'+
+    var h = '<h2 id="cx-title">'+nombre+(nombre?'detecté ':'Detecté ')+n+' problema'+(n>1?'s':'')+(nPropias?' y te puedo ayudar con '+nPropias+' solucion'+(nPropias>1?'es':''):'')+'</h2>'+
       '<div class="res-sum">'+Object.keys(areasDet).map(function(a){return '<span class="chip">'+esc(a)+'</span>';}).join('')+'</div>';
     var externos = lista.filter(function(g){return SOL[g.s].ext;});
     lista = lista.filter(function(g){return !SOL[g.s].ext;});
