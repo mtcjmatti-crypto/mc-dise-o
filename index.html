@@ -272,39 +272,47 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
 
   /* Soluciones: t título, h qué hace, r resultado, p [mín, máx] CLP, pz plazo, m mensual, x nota extra */
   var SOL = {
-    embudo:{t:'Embudo de venta + anuncios', h:'Armo el camino completo: anuncio, página y mensaje de cierre, con los textos listos.', r:'Te llegan clientes nuevos todas las semanas sin depender del boca a boca.', p:[80000,120000], pz:'5–7 días'},
-    catalogo:{t:'Catálogo con pedido por WhatsApp', h:'Tus productos con foto y precio, carrito y el pedido completo directo a tu WhatsApp.', r:'Los pedidos llegan ordenados y vendes las 24 horas sin pagar comisión a apps.', p:[90000,120000], pz:'7–10 días'},
-    landing:{t:'Página web (landing)', h:'Una página que presenta lo que haces y lleva a la gente a escribirte.', r:'Te encuentran y te contactan sin que tengas que explicar todo cada vez.', p:[80000,120000], pz:'3–5 días'},
-    asesor:{t:'Asesor guiado', h:'Unas preguntas simples recomiendan el producto ideal a cada cliente dentro de tu catálogo.', r:'El cliente compra con confianza y tú respondes menos dudas.', p:[40000,60000], pz:'+2–5 días', x:'sobre el catálogo'},
-    fidelizacion:{t:'Tarjeta de puntos digital', h:'Tus clientes suman puntos con cada compra y reciben promociones y recordatorios.', r:'Vuelven a comprarte más seguido.', p:[50000,90000], pz:'5–7 días'},
-    redes:{t:'Redes sociales mensual', h:'Me encargo de 8 publicaciones e historias al mes con un calendario que apruebas tú.', r:'Tus redes se mantienen activas sin que pierdas tiempo.', p:[100000,120000], pz:'mensual', m:true},
-    canva:{t:'Pack de plantillas Canva', h:'8 diseños con tu marca que puedes editar tú mismo.', r:'Publicas con imagen profesional en minutos.', p:[40000,60000], pz:'3–5 días'},
-    anuncios:{t:'Textos para anuncios', h:'3 versiones de anuncio con ganchos pensados para tu cliente.', r:'Tus anuncios atraen al cliente correcto y gastas menos.', p:[25000,25000], pz:'1–2 días'},
-    resenas:{t:'Sistema de reseñas', h:'Un QR y un mensaje automático piden la reseña al cliente feliz, más respuestas listas para las reseñas malas.', r:'Suben tus estrellas en Google y das más confianza.', p:[30000,50000], pz:'2–3 días'},
-    maps:{t:'Ficha en Google Maps', h:'Creo o corrijo tu ficha con fotos, horarios, ubicación, teléfono y enlaces.', r:'Te encuentran cuando buscan tu rubro cerca.', p:[30000,60000], pz:'2–3 días'},
-    gastos:{t:'Control de gastos automático', h:'Los correos de aviso de tu banco pasan solos a una planilla que ordena cada compra, transferencia e ingreso por categoría.', r:'Cada semana sabes cuánto gastaste, en qué y qué día.', p:[60000,100000], pz:'7–10 días'},
-    pagos:{t:'Recordatorio de pagos', h:'Una app con tus cuentas y vencimientos que te avisa antes de cada pago.', r:'No vuelves a pagar intereses ni multas por atraso.', p:[40000,70000], pz:'3–5 días'},
-    panel:{t:'Panel de ventas y caja', h:'Registras ventas y gastos en una planilla y un panel muestra el resumen del día y del mes.', r:'Sabes cuánto vendes, cuánto gastas y cuánto ganas, sin hacer cuentas.', p:[60000,100000], pz:'5–7 días'},
-    costos:{t:'Calculadora de costos y precios', h:'Ingresas tus costos y te dice el precio y la ganancia de cada producto.', r:'Cobras lo justo y cada venta te deja ganancia.', p:[40000,70000], pz:'3–5 días'},
-    cobranza:{t:'Cobranza automática', h:'Registra lo que te deben y envía recordatorios de pago a tus clientes.', r:'Cobras a tiempo sin tener que perseguir a nadie.', p:[50000,90000], pz:'5–7 días'},
-    stock:{t:'Control de stock', h:'Cada venta descuenta del stock y te avisa cuando algo se acaba o está por vencer.', r:'No te quedas sin producto ni pierdes mercadería.', p:[70000,120000], pz:'7–10 días'},
-    compras:{t:'Pedidos a proveedores', h:'Arma la lista de compra según tu stock y la deja lista para enviar a cada proveedor.', r:'Compras lo justo en minutos.', p:[50000,90000], pz:'5–7 días'},
-    despachos:{t:'Gestor de despachos', h:'Ordena los pedidos por zona, sugiere la ruta, calcula el envío y avisa al cliente cuando sale su pedido.', r:'Repartes más rápido y nadie te pregunta dónde va su pedido.', p:[70000,120000], pz:'7–10 días'},
-    personal:{t:'Gestión de personal', h:'Turnos, marcas de asistencia desde el celular y carpeta digital con contratos y liquidaciones.', r:'Controlas atrasos y tienes todo en orden para el contador o una fiscalización.', p:[60000,120000], pz:'7–10 días'},
-    reclutamiento:{t:'Postulación en línea', h:'Una página de postulación con preguntas filtro que ordena a los candidatos.', r:'Contratas más rápido y solo entrevistas a quienes calzan.', p:[50000,90000], pz:'5–7 días'},
-    manual:{t:'Manual digital de inducción', h:'Pasos, fotos y checklist de cada puesto en el celular del trabajador.', r:'El trabajador nuevo aprende solo y tú ahorras horas.', p:[40000,70000], pz:'5–7 días'},
-    tramites:{t:'Asesoría contable y tributaria', h:'Formalización, impuestos, boletas, facturas y seguros los veo en mi servicio de contador, aparte de este sitio.', r:'Lo dejas en manos de un contador y te enfocas en vender.', ext:true},
-    vencimientos:{t:'Agenda de vencimientos y documentos', h:'Guarda tus documentos y te avisa antes de que venzan patentes, permisos, seguros y declaraciones.', r:'No se te pasa ninguna fecha importante.', p:[40000,70000], pz:'3–5 días'},
-    ia:{t:'Asistente con IA', h:'Responde a tus clientes a cualquier hora y les recomienda qué comprar.', r:'Atiendes las 24 horas sin estar pegado al teléfono.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
-    whatsapp:{t:'WhatsApp Business configurado', h:'Catálogo, respuestas rápidas, mensaje de bienvenida y de ausencia.', r:'Respondes en segundos aunque estés ocupado.', p:[25000,40000], pz:'1–2 días'},
-    reclamos:{t:'Gestión de reclamos', h:'Un formulario registra cada reclamo y te recuerda hasta que lo cierras.', r:'Ningún reclamo queda sin respuesta.', p:[40000,70000], pz:'3–5 días'},
-    reservas:{t:'Agenda de reservas con recordatorio', h:'El cliente elige su hora en línea y recibe un recordatorio antes de su cita.', r:'Agenda ordenada y menos clientes que faltan.', p:[60000,100000], pz:'5–7 días'},
-    menu:{t:'Menú digital con QR', h:'Tu carta en el celular del cliente con un QR en la mesa.', r:'Cambias precios al instante sin reimprimir.', p:[60000,120000], pz:'3–5 días'},
-    comandas:{t:'Pedidos digitales a cocina', h:'El pedido pasa de la mesa o la caja a una pantalla en cocina, en orden.', r:'Menos errores y platos que salen más rápido.', p:[70000,120000], pz:'7–10 días'},
-    automatiza:{t:'Automatización a medida', h:'Reviso tu tarea repetitiva y la convierto en un proceso automático con planillas y avisos.', r:'Recuperas horas de trabajo cada semana.', p:[60000,120000], pz:'5–10 días'},
-    lanzamiento:{t:'Plan de lanzamiento', h:'Ordenamos tu idea: a quién le vendes, qué ofreces, a qué precio y los primeros pasos.', r:'Partes con un plan claro en vez de improvisar.', p:[60000,100000], pz:'3–5 días'},
-    marca:{t:'Marca: nombre, logo y colores', h:'Creo el nombre, el logo y la paleta de tu negocio.', r:'Te ves profesional desde el primer día.', p:[40000,80000], pz:'3–5 días'},
-    estudio:{t:'Estudio rápido de mercado', h:'Reviso tu competencia, sus precios y la demanda en tu zona.', r:'Sabes si tu idea se vende antes de invertir.', p:[40000,70000], pz:'3–5 días'}
+    embudo:{t:'Embudo de venta + anuncios', h:'Anuncio, página y mensaje de cierre listos.', r:'Clientes nuevos cada semana.', p:[80000,120000], pz:'5–7 días'},
+    catalogo:{t:'Catálogo con pedido por WhatsApp', h:'Productos, carrito y pedido directo a tu WhatsApp.', r:'Pedidos ordenados, ventas 24/7 y sin comisiones.', p:[90000,120000], pz:'7–10 días'},
+    landing:{t:'Página web (landing)', h:'Una página que muestra lo que haces.', r:'Te encuentran y te escriben.', p:[80000,120000], pz:'3–5 días'},
+    asesor:{t:'Asesor guiado', h:'Preguntas que recomiendan el producto ideal.', r:'El cliente compra seguro.', p:[40000,60000], pz:'+2–5 días', x:'sobre el catálogo'},
+    fidelizacion:{t:'Tarjeta de puntos digital', h:'Puntos y promociones por cada compra.', r:'Tus clientes vuelven.', p:[50000,90000], pz:'5–7 días'},
+    referidos:{t:'Programa de referidos', h:'Cada cliente recibe un premio por recomendarte.', r:'Clientes nuevos sin pagar publicidad.', p:[40000,70000], pz:'3–5 días'},
+    cotizador:{t:'Cotizador en línea', h:'El cliente arma su cotización solo en tu web.', r:'Cotizas en segundos, no en horas.', p:[50000,90000], pz:'5–7 días'},
+    redes:{t:'Redes sociales mensual', h:'8 publicaciones e historias al mes.', r:'Redes activas sin perder tiempo.', p:[100000,120000], pz:'mensual', m:true},
+    canva:{t:'Pack de plantillas Canva', h:'8 diseños editables con tu marca.', r:'Imagen profesional en minutos.', p:[40000,60000], pz:'3–5 días'},
+    anuncios:{t:'Textos para anuncios', h:'3 anuncios con ganchos para tu cliente.', r:'Gastas menos y vendes más.', p:[25000,25000], pz:'1–2 días'},
+    resenas:{t:'Sistema de reseñas', h:'QR que pide la reseña + respuestas listas.', r:'Más estrellas en Google.', p:[30000,50000], pz:'2–3 días'},
+    encuesta:{t:'Encuesta de satisfacción automática', h:'Llega sola al cliente después de comprar.', r:'Sabes qué mejorar.', p:[30000,50000], pz:'2–3 días'},
+    maps:{t:'Ficha en Google Maps', h:'Fotos, horarios, ubicación y contacto al día.', r:'Te encuentran cerca.', p:[30000,60000], pz:'2–3 días'},
+    gastos:{t:'Control de gastos automático', h:'Los avisos de tu banco se ordenan solos.', r:'Sabes cuánto gastas, en qué y cuándo.', p:[60000,100000], pz:'7–10 días'},
+    pagos:{t:'Recordatorio de pagos', h:'Avisos antes de cada vencimiento.', r:'Cero intereses por atraso.', p:[40000,70000], pz:'3–5 días'},
+    panel:{t:'Panel de ventas y caja', h:'Ventas y gastos en un resumen diario y mensual.', r:'Sabes cuánto ganas sin hacer cuentas.', p:[60000,100000], pz:'5–7 días'},
+    costos:{t:'Calculadora de costos y precios', h:'Precio y ganancia de cada producto.', r:'Cada venta te deja ganancia.', p:[40000,70000], pz:'3–5 días'},
+    recetas:{t:'Costeo de recetas', h:'Costo real de cada plato según sus insumos.', r:'Sabes qué plato te conviene vender.', p:[50000,90000], pz:'5–7 días'},
+    cobranza:{t:'Cobranza automática', h:'Recordatorios de pago a quien te debe.', r:'Cobras sin perseguir a nadie.', p:[50000,90000], pz:'5–7 días'},
+    stock:{t:'Control de stock', h:'Descuenta por venta y avisa si algo falta o vence.', r:'Nunca te quedas sin producto.', p:[70000,120000], pz:'7–10 días'},
+    compras:{t:'Pedidos a proveedores', h:'Lista de compra automática según tu stock.', r:'Compras lo justo en minutos.', p:[50000,90000], pz:'5–7 días'},
+    despachos:{t:'Gestor de despachos', h:'Rutas, costo de envío y aviso al cliente.', r:'Repartes más rápido y sin llamadas.', p:[70000,120000], pz:'7–10 días'},
+    flota:{t:'Control de vehículos', h:'Mantenciones, combustible y documentos de cada vehículo.', r:'Menos fallas y gastos sorpresa.', p:[50000,90000], pz:'5–7 días'},
+    personal:{t:'Gestión de personal', h:'Turnos, asistencia por celular y carpeta digital.', r:'Controlas atrasos y todo queda en orden.', p:[60000,120000], pz:'7–10 días'},
+    tareas:{t:'Tablero de tareas del equipo', h:'Cada trabajador ve y marca sus tareas.', r:'Sabes en qué está cada uno.', p:[40000,70000], pz:'3–5 días'},
+    reclutamiento:{t:'Postulación en línea', h:'Formulario con preguntas filtro.', r:'Solo entrevistas a los que calzan.', p:[50000,90000], pz:'5–7 días'},
+    manual:{t:'Manual digital de inducción', h:'Pasos y checklist de cada puesto en el celular.', r:'El nuevo aprende solo.', p:[40000,70000], pz:'5–7 días'},
+    tramites:{t:'Asesoría contable y tributaria', h:'Impuestos, trámites, boletas y seguros los veo en mi servicio de contador.', r:'', ext:true},
+    vencimientos:{t:'Agenda de vencimientos y documentos', h:'Avisa antes de que venzan patentes, permisos y seguros.', r:'No se te pasa ninguna fecha.', p:[40000,70000], pz:'3–5 días'},
+    ia:{t:'Asistente con IA', h:'Responde y recomienda a cualquier hora.', r:'Atiendes 24/7 sin el teléfono en la mano.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
+    whatsapp:{t:'WhatsApp Business configurado', h:'Catálogo, respuestas rápidas y mensajes automáticos.', r:'Respondes en segundos.', p:[25000,40000], pz:'1–2 días'},
+    clientes:{t:'Ficha digital de clientes', h:'Historial de compras y datos de cada cliente.', r:'Atiendes mejor y vendes de nuevo.', p:[50000,90000], pz:'5–7 días'},
+    reclamos:{t:'Gestión de reclamos', h:'Registra cada reclamo hasta cerrarlo.', r:'Ningún reclamo sin respuesta.', p:[40000,70000], pz:'3–5 días'},
+    reservas:{t:'Agenda de reservas con recordatorio', h:'Reserva en línea y aviso antes de la cita.', r:'Agenda ordenada y menos faltas.', p:[60000,100000], pz:'5–7 días'},
+    fila:{t:'Fila virtual', h:'El cliente toma número desde su celular y recibe aviso.', r:'Menos filas y clientes más tranquilos.', p:[40000,70000], pz:'3–5 días'},
+    menu:{t:'Menú digital con QR', h:'Tu carta en el celular del cliente.', r:'Cambias precios al instante.', p:[60000,120000], pz:'3–5 días'},
+    comandas:{t:'Pedidos digitales a cocina', h:'El pedido llega en orden a una pantalla en cocina.', r:'Menos errores y platos más rápidos.', p:[70000,120000], pz:'7–10 días'},
+    automatiza:{t:'Automatización a medida', h:'Tu tarea repetitiva convertida en proceso automático.', r:'Recuperas horas cada semana.', p:[60000,120000], pz:'5–10 días'},
+    lanzamiento:{t:'Plan de lanzamiento', h:'Cliente, oferta, precio y primeros pasos.', r:'Partes con un plan claro.', p:[60000,100000], pz:'3–5 días'},
+    marca:{t:'Marca: nombre, logo y colores', h:'Identidad completa para tu negocio.', r:'Te ves profesional desde el día uno.', p:[40000,80000], pz:'3–5 días'},
+    estudio:{t:'Estudio rápido de mercado', h:'Competencia, precios y demanda en tu zona.', r:'Sabes si se vende antes de invertir.', p:[40000,70000], pz:'3–5 días'}
   };
 
   /* Áreas y problemas: s solución, f perfiles (por defecto, los del área) */
@@ -318,7 +326,9 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       {id:'v6', t:'Mis clientes no saben qué producto elegir', s:'asesor', f:['emp','pyme']},
       {id:'v7', t:'Vendo solo en mi local y quiero vender por internet', s:'catalogo', f:['pyme','rest']},
       {id:'v8', t:'Quiero ganar ingresos extra vendiendo algo', s:'landing', f:['per']},
-      {id:'v9', t:'Quiero mostrar mi trabajo de forma profesional', s:'landing', f:['per','serv']}
+      {id:'v9', t:'Quiero mostrar mi trabajo de forma profesional', s:'landing', f:['per','serv']},
+      {id:'v10', t:'Hacer cotizaciones me quita mucho tiempo', s:'cotizador', f:['serv','pyme']},
+      {id:'v11', t:'Quiero que mis clientes me recomienden', s:'referidos', f:BIZ}
     ]},
     {id:'mkt', t:'Marketing y redes', f:BIZ, p:[
       {id:'m1', t:'No tengo tiempo para las redes sociales', s:'redes'},
@@ -330,7 +340,8 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     {id:'rep', t:'Reseñas y calificaciones', f:BIZ, p:[
       {id:'r1', t:'Tengo pocas reseñas en Google', s:'resenas'},
       {id:'r2', t:'Tengo reseñas malas y no sé cómo responder', s:'resenas'},
-      {id:'r3', t:'Mis clientes contentos no dejan reseña', s:'resenas'}
+      {id:'r3', t:'Mis clientes contentos no dejan reseña', s:'resenas'},
+      {id:'r4', t:'No sé qué piensan mis clientes de mi servicio', s:'encuesta'}
     ]},
     {id:'ubi', t:'Ubicación y visibilidad', f:BIZ, p:[
       {id:'u1', t:'No aparezco en Google Maps', s:'maps'},
@@ -344,7 +355,8 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       {id:'f4', t:'No sé si mis precios me dejan ganancia', s:'costos', f:BIZ},
       {id:'f5', t:'Me deben plata y me cuesta cobrar', s:'cobranza', f:BIZ},
       {id:'f6', t:'Mezclo la plata personal con la del negocio', s:'gastos', f:['emp','pyme','serv']},
-      {id:'f7', t:'Mi caja no cuadra al final del día', s:'panel', f:['pyme','rest']}
+      {id:'f7', t:'Mi caja no cuadra al final del día', s:'panel', f:['pyme','rest']},
+      {id:'f8', t:'No sé cuánto me cuesta cada plato', s:'recetas', f:['rest']}
     ]},
     {id:'inv', t:'Inventario y compras', f:['emp','pyme','rest'], p:[
       {id:'i1', t:'Se me descuadra el stock', s:'stock'},
@@ -358,14 +370,16 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       {id:'l2', t:'No sé qué ruta hacer para repartir', s:'despachos'},
       {id:'l3', t:'Los clientes preguntan todo el rato dónde va su pedido', s:'despachos'},
       {id:'l4', t:'Calcular el costo de envío me quita tiempo', s:'despachos'},
-      {id:'l5', t:'Las apps de delivery me cobran mucha comisión', s:'catalogo', f:['pyme','rest']}
+      {id:'l5', t:'Las apps de delivery me cobran mucha comisión', s:'catalogo', f:['pyme','rest']},
+      {id:'l6', t:'No controlo mantenciones ni combustible de mis vehículos', s:'flota'}
     ]},
     {id:'rrhh', t:'Personal y RRHH', f:['emp','pyme','rest','serv'], p:[
       {id:'h1', t:'Llevo los turnos y la asistencia en papel', s:'personal'},
       {id:'h2', t:'Hay atrasos y faltas que no puedo controlar', s:'personal'},
       {id:'h3', t:'Contratos y liquidaciones están desordenados', s:'personal'},
       {id:'h4', t:'Me cuesta encontrar buenos trabajadores', s:'reclutamiento'},
-      {id:'h5', t:'Enseñarle a cada trabajador nuevo me toma mucho tiempo', s:'manual'}
+      {id:'h5', t:'Enseñarle a cada trabajador nuevo me toma mucho tiempo', s:'manual'},
+      {id:'h6', t:'No sé en qué está cada trabajador', s:'tareas'}
     ]},
     {id:'legal', t:'Legal, impuestos y trámites', f:BIZ.concat(['crear']), p:[
       {id:'g1', t:'No sé cómo formalizar mi negocio', s:'tramites', f:['crear','emp','serv']},
@@ -382,14 +396,16 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       {id:'a1', t:'Respondo las mismas preguntas todo el día', s:'ia'},
       {id:'a2', t:'Contesto tarde y pierdo ventas', s:'ia'},
       {id:'a3', t:'No tengo mensajes listos para responder rápido', s:'whatsapp'},
-      {id:'a4', t:'Los reclamos se me acumulan', s:'reclamos'}
+      {id:'a4', t:'Los reclamos se me acumulan', s:'reclamos'},
+      {id:'a5', t:'No tengo registro de mis clientes ni de lo que compran', s:'clientes'}
     ]},
     {id:'ope', t:'Operación diaria', f:['pyme','rest','serv'], p:[
       {id:'o1', t:'Las reservas y horas me llegan desordenadas', s:'reservas', f:['rest','serv']},
       {id:'o2', t:'Los clientes faltan a sus horas', s:'reservas', f:['serv']},
       {id:'o3', t:'Mi menú impreso es caro de cambiar', s:'menu', f:['rest']},
       {id:'o4', t:'Los pedidos se confunden entre caja y cocina', s:'comandas', f:['rest']},
-      {id:'o5', t:'Hago todo a mano y no me alcanza el tiempo', s:'automatiza'}
+      {id:'o5', t:'Hago todo a mano y no me alcanza el tiempo', s:'automatiza'},
+      {id:'o6', t:'Se forman filas y los clientes se aburren de esperar', s:'fila'}
     ]},
     {id:'crear', t:'Crear mi negocio', f:['crear','per'], p:[
       {id:'c1', t:'Tengo una idea pero no sé por dónde empezar', s:'lanzamiento'},
@@ -416,7 +432,9 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     [/vend|clientes nuevos|pocos clientes/i,'v1'], [/no vuelven|fideli|puntos/i,'v4'], [/p[aá]gina web|sitio web/i,'v5'],
     [/pregunt|respond|mensajes|whatsapp/i,'a1'], [/reclamo|queja/i,'a4'],
     [/reserva|cita|agenda|horas/i,'o1'], [/men[uú]|carta/i,'o3'], [/cocina|comanda/i,'o4'], [/a mano|tiempo|repetitiv|automatiz/i,'o5'],
-    [/idea|empezar|emprender|partir/i,'c1'], [/nombre/i,'c2']
+    [/idea|empezar|emprender|partir/i,'c1'], [/nombre/i,'c2'],
+    [/cotizaci/i,'v10'], [/recomiend|referid/i,'v11'], [/encuesta|qu[eé] piensan|opinan/i,'r4'], [/receta|cu[aá]nto cuesta cada plato/i,'f8'],
+    [/veh[ií]culo|cami[oó]n|camioneta|combustible|bencina|flota/i,'l6'], [/tarea/i,'h6'], [/registro de clientes|base de datos|historial/i,'a5'], [/\bfila|esperar|espera\b/i,'o6']
   ];
   var URG = [
     {id:'sin', t:'Sin apuro', d:'Cuando se pueda'},
