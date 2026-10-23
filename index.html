@@ -257,6 +257,9 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
 <script>
 (function(){
   var WA = '56974629597';
+  var CONTADOR_URL = ''; /* enlace al sitio de contador cuando exista */
+  var MKT = {embudo:1,redes:1,canva:1,anuncios:1,maps:1,marca:1,estudio:1,lanzamiento:1};
+  function rangoTipo(s){ return SOL[s].ext ? 2 : (MKT[s] ? 1 : 0); }
   var BIZ = ['emp','pyme','rest','serv'];
   var PERFILES = [
     {id:'per', t:'Persona natural', d:'Quiero ordenar mis finanzas o mis cosas'},
@@ -290,7 +293,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     personal:{t:'Gestión de personal', h:'Turnos, marcas de asistencia desde el celular y carpeta digital con contratos y liquidaciones.', r:'Controlas atrasos y tienes todo en orden para el contador o una fiscalización.', p:[60000,120000], pz:'7–10 días'},
     reclutamiento:{t:'Postulación en línea', h:'Una página de postulación con preguntas filtro que ordena a los candidatos.', r:'Contratas más rápido y solo entrevistas a quienes calzan.', p:[50000,90000], pz:'5–7 días'},
     manual:{t:'Manual digital de inducción', h:'Pasos, fotos y checklist de cada puesto en el celular del trabajador.', r:'El trabajador nuevo aprende solo y tú ahorras horas.', p:[40000,70000], pz:'5–7 días'},
-    tramites:{t:'Orientación de trámites, impuestos y seguros', h:'Reviso tu caso y te dejo claro qué trámites, declaraciones, documentos y seguros te corresponden.', r:'Trabajas tranquilo y sin multas.', p:[30000,60000], pz:'2–3 días'},
+    tramites:{t:'Asesoría contable y tributaria', h:'Formalización, impuestos, boletas, facturas y seguros los veo en mi servicio de contador, aparte de este sitio.', r:'Lo dejas en manos de un contador y te enfocas en vender.', ext:true},
     vencimientos:{t:'Agenda de vencimientos y documentos', h:'Guarda tus documentos y te avisa antes de que venzan patentes, permisos, seguros y declaraciones.', r:'No se te pasa ninguna fecha importante.', p:[40000,70000], pz:'3–5 días'},
     ia:{t:'Asistente con IA', h:'Responde a tus clientes a cualquier hora y les recomienda qué comprar.', r:'Atiendes las 24 horas sin estar pegado al teléfono.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
     whatsapp:{t:'WhatsApp Business configurado', h:'Catálogo, respuestas rápidas, mensaje de bienvenida y de ausencia.', r:'Respondes en segundos aunque estés ocupado.', p:[25000,40000], pz:'1–2 días'},
@@ -461,6 +464,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     st.probs.forEach(function(pid){ add(pid); });
     CLAVES.forEach(function(k){ if(k[0].test(st.com)){ var p=PMAP[k[1]]; if(st.probs.indexOf(k[1])<0) add(k[1], p.t+' (lo que me contaste)'); } });
     if(grupos.asesor && !grupos.catalogo){ grupos.catalogo={s:'catalogo', probs:['Necesario para el asesor guiado']}; orden.push('catalogo'); }
+    orden.sort(function(a,b){ return rangoTipo(a)-rangoTipo(b); });
     return orden.map(function(s){return grupos[s];});
   }
 
@@ -517,10 +521,13 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
         '<button type="button" class="btn btn-ghost" data-act="reset">Empezar de nuevo</button></div>';
     }
     lista.forEach(function(g){ n+=g.probs.length; });
+    var nPropias = lista.filter(function(g){return !SOL[g.s].ext;}).length;
     var areasDet = {};
     st.probs.forEach(function(pid){ areasDet[AMAP[PMAP[pid].a].t]=1; });
-    var h = '<h2 id="cx-title">'+nombre+'detecté '+n+' problema'+(n>1?'s':'')+' y te puedo ayudar con '+lista.length+' solucion'+(lista.length>1?'es':'')+'</h2>'+
+    var h = '<h2 id="cx-title">'+nombre+'detecté '+n+' problema'+(n>1?'s':'')+(nPropias?' y te puedo ayudar con '+nPropias+' solucion'+(nPropias>1?'es':''):'')+'</h2>'+
       '<div class="res-sum">'+Object.keys(areasDet).map(function(a){return '<span class="chip">'+esc(a)+'</span>';}).join('')+'</div>';
+    var externos = lista.filter(function(g){return SOL[g.s].ext;});
+    lista = lista.filter(function(g){return !SOL[g.s].ext;});
     lista.forEach(function(g){
       var s = SOL[g.s];
       if(s.m){ mes[0]+=s.p[0]; mes[1]+=s.p[1]; } else { min+=s.p[0]; max+=s.p[1]; }
@@ -529,6 +536,12 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
         '<p class="fix">Resuelve: <b>'+g.probs.map(esc).join(' · ')+'</b></p>'+
         '<p>'+esc(s.h)+'</p><p class="ok">Así: '+esc(s.r)+'</p>'+
         '<div class="meta">'+rango(s.p,s.m)+(s.x?'<small>'+esc(s.x)+'</small>':'')+'<small>Plazo: '+esc(s.pz)+'</small></div></div>';
+    });
+    externos.forEach(function(g){
+      var s = SOL[g.s];
+      h += '<div class="sol"><h3>'+esc(s.t)+'</h3><p class="fix">Sobre: <b>'+g.probs.map(esc).join(' · ')+'</b></p><p>'+esc(s.h)+'</p>'+
+        (CONTADOR_URL?'<p><a target="_blank" rel="noopener" href="'+CONTADOR_URL+'">Ver mi servicio de contador</a></p>':'<p class="ok">Te lo explico por WhatsApp junto con tu cotización.</p>')+
+        '<div class="meta">Servicio aparte</div></div>';
     });
     if(max){ h += '<div class="total"><span>Cotización estimada</span><strong>'+clp(min)+' – '+clp(max)+'</strong></div>'; }
     var notas = [];
@@ -546,6 +559,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       L.push((i+1)+'. '+s.t+' — '+rango(s.p,s.m)+(s.x?' '+s.x:'')+' (plazo '+s.pz+')');
       L.push('   Resuelve: '+g.probs.join('; '));
     });
+    externos.forEach(function(g){ L.push('* Asesoría contable (servicio aparte): '+g.probs.join('; ')); });
     L.push('');
     if(max) L.push('Cotización estimada: '+clp(min)+' – '+clp(max)+(mes[1]?' + '+rango(mes,true):''));
     if(st.urg) L.push('Plazo: '+URG.filter(function(u){return u.id===st.urg;})[0].t);
@@ -582,7 +596,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   var cont = document.getElementById('medida');
   if(cont){
     var base = {embudo:1,catalogo:1,landing:1,asesor:1,redes:1,canva:1,anuncios:1,ia:1,menu:1};
-    cont.innerHTML = Object.keys(SOL).filter(function(k){return !base[k];}).map(function(k){var s=SOL[k];
+    cont.innerHTML = Object.keys(SOL).filter(function(k){return !base[k] && !SOL[k].ext;}).map(function(k){var s=SOL[k];
       return '<div class="row custom-row"><div class="info"><div class="name">'+esc(s.t)+'</div><div class="desc">'+esc(s.h)+'</div></div><div class="time">'+esc(s.pz)+'</div><div class="price">'+rango(s.p,s.m)+'</div></div>';}).join('');
   }
 
