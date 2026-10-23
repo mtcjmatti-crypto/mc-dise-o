@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Páginas web, catálogos con pedido por WhatsApp, menús QR, apps y diseño para redes en Iquique.">
+<meta name="description" content="Sitios web, tiendas online, apps e inteligencia artificial para negocios en Iquique.">
 <title>MC Diseño &amp; Marketing</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -207,7 +207,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     <div>
       <div class="eyebrow">Iquique · Chile</div>
       <h1>MC Diseño &amp; Marketing</h1>
-      <p class="lead">Páginas web, catálogos con pedido por WhatsApp, menús con QR, apps y diseños para redes. Hecho por Matías Condori para negocios que quieren vender más.</p>
+      <p class="lead">Sitios web, tiendas online, apps e inteligencia artificial hechos a la medida de tu negocio: ventas, gastos, stock y personal. Por Matías Condori.</p>
       <div class="actions">
         <a class="btn btn-primary" href="https://wa.me/56974629597?text=Hola%20Mat%C3%ADas%2C%20quiero%20cotizar%20un%20trabajo" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
         <button type="button" class="btn btn-ghost" data-open-consulta>Consulta gratis</button>
@@ -273,12 +273,12 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
 (function(){
   var WA = '56974629597';
   var CONTADOR_URL = ''; /* enlace al sitio de contador cuando exista */
-  var MKT = {embudo:1,redes:1,canva:1,anuncios:1,maps:1,marca:1,estudio:1,lanzamiento:1};
+  var MKT = {embudo:1,redes:1,canva:1,anuncios:1,maps:1,marca:1};
   function rangoTipo(s){ return SOL[s].ext ? 2 : (MKT[s] ? 1 : 0); }
   var BIZ = ['emp','pyme','rest','serv'];
   var PERFILES = [
-    {id:'per', t:'Persona natural', d:'Quiero ordenar mis finanzas o mis cosas'},
-    {id:'crear', t:'Quiero crear un negocio', d:'Tengo una idea y quiero partir'},
+    {id:'per', t:'Persona natural', d:'Quiero ordenar mis gastos o mostrar mi trabajo'},
+    {id:'crear', t:'Voy a empezar a vender', d:'Necesito mi primera web o tienda'},
     {id:'emp', t:'Emprendimiento', d:'Vendo por redes o desde la casa'},
     {id:'pyme', t:'Negocio, tienda o pyme', d:'Tengo local, productos o trabajadores'},
     {id:'rest', t:'Restaurante o comida', d:'Local, delivery o venta de comida'},
@@ -289,20 +289,30 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   var SOL = {
     embudo:{t:'Embudo de venta + anuncios', h:'Anuncio, página y mensaje de cierre listos.', r:'Clientes nuevos cada semana.', p:[80000,120000], pz:'5–7 días'},
     catalogo:{t:'Catálogo con pedido por WhatsApp', h:'Productos, carrito y pedido directo a tu WhatsApp.', r:'Pedidos ordenados, ventas 24/7 y sin comisiones.', p:[90000,120000], pz:'7–10 días'},
+    tienda:{t:'Tienda online con pago en línea', h:'Carrito y pago con tarjeta (Webpay o Mercado Pago).', r:'Vendes y cobras solo, a cualquier hora.', p:[100000,120000], pz:'10–15 días'},
     landing:{t:'Página web (landing)', h:'Una página que muestra lo que haces.', r:'Te encuentran y te escriben.', p:[80000,120000], pz:'3–5 días'},
+    portafolio:{t:'Portafolio o web personal', h:'Tus trabajos, servicios y contacto en un link.', r:'Te ves profesional al compartirlo.', p:[60000,90000], pz:'3–5 días'},
+    eventos:{t:'Página de eventos e inscripciones', h:'Información, cupos e inscripción en línea.', r:'Inscritos ordenados en una planilla.', p:[50000,90000], pz:'5–7 días'},
+    cursos:{t:'Plataforma de cursos o membresías', h:'Clases y contenido solo para quienes pagan.', r:'Vendes tu conocimiento en línea.', p:[90000,120000], pz:'10–15 días'},
+    rediseno:{t:'Rediseño de tu web', h:'Tu sitio actual, moderno y rápido en el celular.', r:'Deja de espantar clientes.', p:[60000,120000], pz:'5–10 días'},
+    seo:{t:'Velocidad y Google (SEO básico)', h:'Tu web rápida y preparada para salir en Google.', r:'Más visitas sin pagar anuncios.', p:[40000,70000], pz:'3–5 días'},
     asesor:{t:'Asesor guiado', h:'Preguntas que recomiendan el producto ideal.', r:'El cliente compra seguro.', p:[40000,60000], pz:'+2–5 días', x:'sobre el catálogo'},
     fidelizacion:{t:'Tarjeta de puntos digital', h:'Puntos y promociones por cada compra.', r:'Tus clientes vuelven.', p:[50000,90000], pz:'5–7 días'},
     referidos:{t:'Programa de referidos', h:'Cada cliente recibe un premio por recomendarte.', r:'Clientes nuevos sin pagar publicidad.', p:[40000,70000], pz:'3–5 días'},
     cotizador:{t:'Cotizador en línea', h:'El cliente arma su cotización solo en tu web.', r:'Cotizas en segundos, no en horas.', p:[50000,90000], pz:'5–7 días'},
+    giftcard:{t:'Gift cards digitales', h:'Tarjetas de regalo que se canjean con QR.', r:'Ventas extra en fechas especiales.', p:[50000,80000], pz:'5–7 días'},
     redes:{t:'Redes sociales mensual', h:'8 publicaciones e historias al mes.', r:'Redes activas sin perder tiempo.', p:[100000,120000], pz:'mensual', m:true},
     canva:{t:'Pack de plantillas Canva', h:'8 diseños editables con tu marca.', r:'Imagen profesional en minutos.', p:[40000,60000], pz:'3–5 días'},
     anuncios:{t:'Textos para anuncios', h:'3 anuncios con ganchos para tu cliente.', r:'Gastas menos y vendes más.', p:[25000,25000], pz:'1–2 días'},
+    marca:{t:'Logo y colores de tu marca', h:'Logo, paleta y tipografías para tu web y redes.', r:'Te ves profesional desde el día uno.', p:[40000,80000], pz:'3–5 días'},
     resenas:{t:'Sistema de reseñas', h:'QR que pide la reseña + respuestas listas.', r:'Más estrellas en Google.', p:[30000,50000], pz:'2–3 días'},
     encuesta:{t:'Encuesta de satisfacción automática', h:'Llega sola al cliente después de comprar.', r:'Sabes qué mejorar.', p:[30000,50000], pz:'2–3 días'},
     maps:{t:'Ficha en Google Maps', h:'Fotos, horarios, ubicación y contacto al día.', r:'Te encuentran cerca.', p:[30000,60000], pz:'2–3 días'},
-    gastos:{t:'Control de gastos automático', h:'Los avisos de tu banco se ordenan solos.', r:'Sabes cuánto gastas, en qué y cuándo.', p:[60000,100000], pz:'7–10 días'},
+    gastos:{t:'Control de gastos automático', h:'Los avisos de tu banco se ordenan solos en una planilla.', r:'Sabes cuánto gastas, en qué y cuándo.', p:[60000,100000], pz:'7–10 días'},
+    escaneo:{t:'App de escaneo de boletas', h:'Fotografías la boleta y la IA anota monto, fecha y comercio.', r:'Tus gastos quedan registrados en segundos.', p:[80000,120000], pz:'7–10 días'},
     pagos:{t:'Recordatorio de pagos', h:'Avisos antes de cada vencimiento.', r:'Cero intereses por atraso.', p:[40000,70000], pz:'3–5 días'},
     panel:{t:'Panel de ventas y caja', h:'Ventas y gastos en un resumen diario y mensual.', r:'Sabes cuánto ganas sin hacer cuentas.', p:[60000,100000], pz:'5–7 días'},
+    dashboard:{t:'Dashboard de indicadores', h:'Tus números clave en una pantalla que se actualiza sola.', r:'Decides con datos, no a ojo.', p:[60000,120000], pz:'5–10 días'},
     costos:{t:'Calculadora de costos y precios', h:'Precio y ganancia de cada producto.', r:'Cada venta te deja ganancia.', p:[40000,70000], pz:'3–5 días'},
     recetas:{t:'Costeo de recetas', h:'Costo real de cada plato según sus insumos.', r:'Sabes qué plato te conviene vender.', p:[50000,90000], pz:'5–7 días'},
     cobranza:{t:'Cobranza automática', h:'Recordatorios de pago a quien te debe.', r:'Cobras sin perseguir a nadie.', p:[50000,90000], pz:'5–7 días'},
@@ -310,63 +320,79 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     compras:{t:'Pedidos a proveedores', h:'Lista de compra automática según tu stock.', r:'Compras lo justo en minutos.', p:[50000,90000], pz:'5–7 días'},
     despachos:{t:'Gestor de despachos', h:'Rutas, costo de envío y aviso al cliente.', r:'Repartes más rápido y sin llamadas.', p:[70000,120000], pz:'7–10 días'},
     flota:{t:'Control de vehículos', h:'Mantenciones, combustible y documentos de cada vehículo.', r:'Menos fallas y gastos sorpresa.', p:[50000,90000], pz:'5–7 días'},
-    personal:{t:'Gestión de personal', h:'Turnos, asistencia por celular y carpeta digital.', r:'Controlas atrasos y todo queda en orden.', p:[60000,120000], pz:'7–10 días'},
+    personal:{t:'Gestión de personal', h:'Turnos, asistencia y carpeta digital de cada trabajador.', r:'Controlas atrasos y todo queda en orden.', p:[60000,120000], pz:'7–10 días'},
+    asistencia:{t:'Marcación de asistencia con QR', h:'El trabajador marca entrada y salida con su celular.', r:'Asistencia exacta sin reloj control.', p:[50000,90000], pz:'5–7 días'},
+    portal:{t:'Portal del trabajador', h:'Turnos, liquidaciones y solicitud de vacaciones en el celular.', r:'Menos consultas y menos papeles.', p:[70000,120000], pz:'7–10 días'},
     tareas:{t:'Tablero de tareas del equipo', h:'Cada trabajador ve y marca sus tareas.', r:'Sabes en qué está cada uno.', p:[40000,70000], pz:'3–5 días'},
     reclutamiento:{t:'Postulación en línea', h:'Formulario con preguntas filtro.', r:'Solo entrevistas a los que calzan.', p:[50000,90000], pz:'5–7 días'},
     manual:{t:'Manual digital de inducción', h:'Pasos y checklist de cada puesto en el celular.', r:'El nuevo aprende solo.', p:[40000,70000], pz:'5–7 días'},
-    tramites:{t:'Asesoría contable y tributaria', h:'Impuestos, trámites, boletas y seguros los veo en mi servicio de contador.', r:'', ext:true},
-    vencimientos:{t:'Agenda de vencimientos y documentos', h:'Avisa antes de que venzan patentes, permisos y seguros.', r:'No se te pasa ninguna fecha.', p:[40000,70000], pz:'3–5 días'},
-    ia:{t:'Asistente con IA', h:'Responde y recomienda a cualquier hora.', r:'Atiendes 24/7 sin el teléfono en la mano.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
+    vencimientos:{t:'Agenda de vencimientos y documentos', h:'Guarda tus documentos y avisa antes de que venzan.', r:'No se te pasa ninguna fecha.', p:[40000,70000], pz:'3–5 días'},
+    ia:{t:'Asistente con IA en tu web', h:'Responde y recomienda a cualquier hora.', r:'Atiendes 24/7 sin el teléfono en la mano.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
+    chatwa:{t:'Chatbot con IA para WhatsApp', h:'Contesta tus mensajes de WhatsApp de forma automática.', r:'No pierdes clientes por no responder.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
+    docsia:{t:'Lector inteligente de documentos', h:'La IA pasa facturas, guías o formularios a una planilla.', r:'Adiós a digitar a mano.', p:[80000,150000], pz:'7–10 días', x:'+ uso mensual'},
+    textosia:{t:'Generador de textos con IA', h:'Crea descripciones y publicaciones con tu estilo.', r:'Publicas más en menos tiempo.', p:[60000,100000], pz:'5–7 días', x:'+ uso mensual'},
     whatsapp:{t:'WhatsApp Business configurado', h:'Catálogo, respuestas rápidas y mensajes automáticos.', r:'Respondes en segundos.', p:[25000,40000], pz:'1–2 días'},
     clientes:{t:'Ficha digital de clientes', h:'Historial de compras y datos de cada cliente.', r:'Atiendes mejor y vendes de nuevo.', p:[50000,90000], pz:'5–7 días'},
     reclamos:{t:'Gestión de reclamos', h:'Registra cada reclamo hasta cerrarlo.', r:'Ningún reclamo sin respuesta.', p:[40000,70000], pz:'3–5 días'},
     reservas:{t:'Agenda de reservas con recordatorio', h:'Reserva en línea y aviso antes de la cita.', r:'Agenda ordenada y menos faltas.', p:[60000,100000], pz:'5–7 días'},
     fila:{t:'Fila virtual', h:'El cliente toma número desde su celular y recibe aviso.', r:'Menos filas y clientes más tranquilos.', p:[40000,70000], pz:'3–5 días'},
     menu:{t:'Menú digital con QR', h:'Tu carta en el celular del cliente.', r:'Cambias precios al instante.', p:[60000,120000], pz:'3–5 días'},
+    mesa:{t:'Pedidos desde la mesa con QR', h:'El cliente pide y llama al garzón desde su celular.', r:'Atiendes más mesas con el mismo equipo.', p:[90000,120000], pz:'7–10 días'},
     comandas:{t:'Pedidos digitales a cocina', h:'El pedido llega en orden a una pantalla en cocina.', r:'Menos errores y platos más rápidos.', p:[70000,120000], pz:'7–10 días'},
-    automatiza:{t:'Automatización a medida', h:'Tu tarea repetitiva convertida en proceso automático.', r:'Recuperas horas cada semana.', p:[60000,120000], pz:'5–10 días'},
-    lanzamiento:{t:'Plan de lanzamiento', h:'Cliente, oferta, precio y primeros pasos.', r:'Partes con un plan claro.', p:[60000,100000], pz:'3–5 días'},
-    marca:{t:'Marca: nombre, logo y colores', h:'Identidad completa para tu negocio.', r:'Te ves profesional desde el día uno.', p:[40000,80000], pz:'3–5 días'},
-    estudio:{t:'Estudio rápido de mercado', h:'Competencia, precios y demanda en tu zona.', r:'Sabes si se vende antes de invertir.', p:[40000,70000], pz:'3–5 días'}
+    automatiza:{t:'Automatización a medida', h:'Tu tarea repetitiva convertida en proceso automático.', r:'Recuperas horas cada semana.', p:[60000,120000], pz:'5–10 días'}
   };
 
   /* Áreas y problemas: s solución, f perfiles (por defecto, los del área) */
   var AREAS = [
-    {id:'ventas', t:'Ventas y clientes', f:BIZ.concat(['per','crear']), p:[
+    {id:'crear', t:'Empezar a vender en internet', f:['crear','per'], p:[
+      {id:'c1', t:'Necesito mi primera página web', s:'landing'},
+      {id:'c5', t:'Quiero vender por internet desde el primer día', s:'catalogo', f:['crear']},
+      {id:'c6', t:'Quiero cobrar en línea con tarjeta', s:'tienda', f:['crear']},
+      {id:'c7', t:'Quiero mostrar mis trabajos en un link', s:'portafolio'},
+      {id:'c2', t:'No tengo logo ni imagen de marca', s:'marca'}
+    ]},
+    {id:'ventas', t:'Ventas y clientes', f:BIZ.concat(['per']), p:[
       {id:'v1', t:'Vendo poco o llegan pocos clientes nuevos', s:'embudo', f:BIZ},
       {id:'v2', t:'Mis clientes no conocen mis productos ni precios', s:'catalogo', f:['emp','pyme','rest']},
       {id:'v3', t:'Los pedidos por WhatsApp se me desordenan', s:'catalogo', f:['emp','pyme','rest']},
+      {id:'v12', t:'Quiero cobrar en línea con tarjeta', s:'tienda', f:['emp','pyme','serv']},
       {id:'v4', t:'Los clientes compran una vez y no vuelven', s:'fidelizacion', f:BIZ},
       {id:'v5', t:'No tengo página web y siento que pierdo clientes', s:'landing', f:BIZ},
+      {id:'v14', t:'Mi página web se ve antigua o es lenta', s:'rediseno', f:BIZ},
       {id:'v6', t:'Mis clientes no saben qué producto elegir', s:'asesor', f:['emp','pyme']},
       {id:'v7', t:'Vendo solo en mi local y quiero vender por internet', s:'catalogo', f:['pyme','rest']},
       {id:'v8', t:'Quiero ganar ingresos extra vendiendo algo', s:'landing', f:['per']},
-      {id:'v9', t:'Quiero mostrar mi trabajo de forma profesional', s:'landing', f:['per','serv']},
+      {id:'v9', t:'Quiero mostrar mi trabajo de forma profesional', s:'portafolio', f:['per','serv']},
+      {id:'v16', t:'Quiero vender cursos, clases o membresías', s:'cursos', f:['per','serv','emp']},
+      {id:'v17', t:'Organizo eventos y las inscripciones son un desorden', s:'eventos', f:['serv','pyme','rest']},
       {id:'v10', t:'Hacer cotizaciones me quita mucho tiempo', s:'cotizador', f:['serv','pyme']},
-      {id:'v11', t:'Quiero que mis clientes me recomienden', s:'referidos', f:BIZ}
+      {id:'v11', t:'Quiero que mis clientes me recomienden', s:'referidos', f:BIZ},
+      {id:'v13', t:'Quiero vender gift cards o tarjetas de regalo', s:'giftcard', f:['pyme','rest','serv']}
     ]},
     {id:'mkt', t:'Marketing y redes', f:BIZ, p:[
       {id:'m1', t:'No tengo tiempo para las redes sociales', s:'redes'},
       {id:'m2', t:'Publico pero nadie me compra', s:'embudo'},
       {id:'m3', t:'Mi marca se ve poco profesional', s:'canva'},
       {id:'m4', t:'No sé qué publicar ni cuándo', s:'redes'},
-      {id:'m5', t:'Pago anuncios y no me funcionan', s:'anuncios'}
+      {id:'m5', t:'Pago anuncios y no me funcionan', s:'anuncios'},
+      {id:'m6', t:'Escribir publicaciones y descripciones me quita tiempo', s:'textosia'}
     ]},
-    {id:'rep', t:'Reseñas y calificaciones', f:BIZ, p:[
+    {id:'rep', t:'Reseñas y visibilidad', f:BIZ, p:[
       {id:'r1', t:'Tengo pocas reseñas en Google', s:'resenas'},
       {id:'r2', t:'Tengo reseñas malas y no sé cómo responder', s:'resenas'},
       {id:'r3', t:'Mis clientes contentos no dejan reseña', s:'resenas'},
-      {id:'r4', t:'No sé qué piensan mis clientes de mi servicio', s:'encuesta'}
-    ]},
-    {id:'ubi', t:'Ubicación y visibilidad', f:BIZ, p:[
+      {id:'r4', t:'No sé qué piensan mis clientes de mi servicio', s:'encuesta'},
       {id:'u1', t:'No aparezco en Google Maps', s:'maps'},
       {id:'u2', t:'A la gente le cuesta encontrar mi local', s:'maps'},
-      {id:'u3', t:'Mis horarios y datos en internet están desactualizados', s:'maps'}
+      {id:'u3', t:'Mis horarios y datos en internet están desactualizados', s:'maps'},
+      {id:'v15', t:'No aparezco en Google cuando me buscan', s:'seo'}
     ]},
-    {id:'fin', t:'Finanzas y cobranza', f:BIZ.concat(['per']), p:[
+    {id:'fin', t:'Gastos y finanzas', f:BIZ.concat(['per']), p:[
       {id:'f1', t:'No sé dónde se me va la plata', s:'gastos', f:['per','emp','serv']},
+      {id:'f9', t:'Guardo las boletas en papel y se me pierden', s:'escaneo', f:['per','emp','pyme','rest','serv']},
       {id:'f2', t:'Se me olvidan pagos y vencimientos', s:'pagos', f:['per','emp','pyme','rest','serv']},
       {id:'f3', t:'No sé cuánto vendo ni cuánto gano', s:'panel', f:BIZ},
+      {id:'f10', t:'No tengo mis números clave a la vista', s:'dashboard', f:['pyme','rest','serv']},
       {id:'f4', t:'No sé si mis precios me dejan ganancia', s:'costos', f:BIZ},
       {id:'f5', t:'Me deben plata y me cuesta cobrar', s:'cobranza', f:BIZ},
       {id:'f6', t:'Mezclo la plata personal con la del negocio', s:'gastos', f:['emp','pyme','serv']},
@@ -380,7 +406,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       {id:'i4', t:'Compro de más y pierdo mercadería', s:'compras'},
       {id:'i5', t:'Pedirle a los proveedores es un desorden', s:'compras'}
     ]},
-    {id:'log', t:'Logística, despachos y transporte', f:['emp','pyme','rest'], p:[
+    {id:'log', t:'Despachos y transporte', f:['emp','pyme','rest'], p:[
       {id:'l1', t:'Los despachos se atrasan o se pierden', s:'despachos'},
       {id:'l2', t:'No sé qué ruta hacer para repartir', s:'despachos'},
       {id:'l3', t:'Los clientes preguntan todo el rato dónde va su pedido', s:'despachos'},
@@ -390,44 +416,36 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     ]},
     {id:'rrhh', t:'Personal y RRHH', f:['emp','pyme','rest','serv'], p:[
       {id:'h1', t:'Llevo los turnos y la asistencia en papel', s:'personal'},
-      {id:'h2', t:'Hay atrasos y faltas que no puedo controlar', s:'personal'},
-      {id:'h3', t:'Contratos y liquidaciones están desordenados', s:'personal'},
+      {id:'h8', t:'No tengo reloj control o la asistencia no es confiable', s:'asistencia'},
+      {id:'h2', t:'Hay atrasos y faltas que no puedo controlar', s:'asistencia'},
+      {id:'h3', t:'Los documentos de cada trabajador están desordenados', s:'personal'},
+      {id:'h7', t:'Me preguntan todo el rato por turnos, liquidaciones o vacaciones', s:'portal'},
       {id:'h4', t:'Me cuesta encontrar buenos trabajadores', s:'reclutamiento'},
       {id:'h5', t:'Enseñarle a cada trabajador nuevo me toma mucho tiempo', s:'manual'},
       {id:'h6', t:'No sé en qué está cada trabajador', s:'tareas'}
     ]},
-    {id:'legal', t:'Legal, impuestos y trámites', f:BIZ.concat(['crear']), p:[
-      {id:'g1', t:'No sé cómo formalizar mi negocio', s:'tramites', f:['crear','emp','serv']},
-      {id:'g2', t:'No sé qué impuestos o declaraciones me tocan', s:'tramites'},
-      {id:'g3', t:'No sé si debo dar boleta o factura', s:'tramites'},
-      {id:'g4', t:'Se me pasan fechas de patentes, permisos o declaraciones', s:'vencimientos', f:BIZ}
-    ]},
-    {id:'seg', t:'Seguros y documentos', f:BIZ.concat(['per']), p:[
-      {id:'s1', t:'No sé cuándo vencen mis seguros o documentos', s:'vencimientos'},
-      {id:'s2', t:'Mis documentos importantes están desordenados', s:'vencimientos'},
-      {id:'s3', t:'No sé qué seguros necesita mi negocio', s:'tramites', f:BIZ}
-    ]},
     {id:'aten', t:'Atención al cliente', f:BIZ, p:[
       {id:'a1', t:'Respondo las mismas preguntas todo el día', s:'ia'},
-      {id:'a2', t:'Contesto tarde y pierdo ventas', s:'ia'},
+      {id:'a6', t:'No alcanzo a responder todos los WhatsApp', s:'chatwa'},
+      {id:'a2', t:'Contesto tarde y pierdo ventas', s:'chatwa'},
       {id:'a3', t:'No tengo mensajes listos para responder rápido', s:'whatsapp'},
       {id:'a4', t:'Los reclamos se me acumulan', s:'reclamos'},
       {id:'a5', t:'No tengo registro de mis clientes ni de lo que compran', s:'clientes'}
     ]},
-    {id:'ope', t:'Operación diaria', f:['pyme','rest','serv'], p:[
+    {id:'ope', t:'Operación diaria', f:['pyme','rest','serv','emp'], p:[
       {id:'o1', t:'Las reservas y horas me llegan desordenadas', s:'reservas', f:['rest','serv']},
       {id:'o2', t:'Los clientes faltan a sus horas', s:'reservas', f:['serv']},
       {id:'o3', t:'Mi menú impreso es caro de cambiar', s:'menu', f:['rest']},
+      {id:'o8', t:'Los garzones no dan abasto en horas punta', s:'mesa', f:['rest']},
       {id:'o4', t:'Los pedidos se confunden entre caja y cocina', s:'comandas', f:['rest']},
-      {id:'o5', t:'Hago todo a mano y no me alcanza el tiempo', s:'automatiza'},
-      {id:'o6', t:'Se forman filas y los clientes se aburren de esperar', s:'fila'}
+      {id:'o6', t:'Se forman filas y los clientes se aburren de esperar', s:'fila', f:['pyme','rest','serv']},
+      {id:'o7', t:'Digito a mano facturas, guías o formularios', s:'docsia', f:['pyme','rest','serv','emp']},
+      {id:'o5', t:'Hago todo a mano y no me alcanza el tiempo', s:'automatiza', f:['pyme','rest','serv','emp']}
     ]},
-    {id:'crear', t:'Crear mi negocio', f:['crear','per'], p:[
-      {id:'c1', t:'Tengo una idea pero no sé por dónde empezar', s:'lanzamiento'},
-      {id:'c2', t:'No tengo nombre ni logo', s:'marca'},
-      {id:'c3', t:'No sé si mi idea se va a vender', s:'estudio'},
-      {id:'c4', t:'No sé cuánto cobrar', s:'costos'},
-      {id:'c5', t:'Quiero vender por internet desde el primer día', s:'catalogo', f:['crear']}
+    {id:'doc', t:'Documentos y vencimientos', f:BIZ.concat(['per']), p:[
+      {id:'s1', t:'No sé cuándo vencen mis documentos importantes', s:'vencimientos'},
+      {id:'s2', t:'Mis documentos importantes están desordenados', s:'vencimientos'},
+      {id:'g4', t:'Se me pasan fechas de patentes o permisos', s:'vencimientos', f:BIZ}
     ]}
   ];
   var PMAP = {}, AMAP = {};
@@ -435,21 +453,27 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
 
   /* Palabras clave del comentario libre → problema */
   var CLAVES = [
-    [/plata|\bgast(o|os|é|a|an|ar)\b|dinero|sueldo|deudas?\b|ahorr/i,'f1'], [/vencimiento|\bvenc(e|en|i[oó])\b|olvid\w* (de )?pagar|cuentas por pagar/i,'f2'],
-    [/ganancia|cu[aá]nto gano|\bmargen|utilidad/i,'f3'], [/cu[aá]nto cobr|mis precios|calcular (el |mis )?precio/i,'f4'], [/me deben|\bcobrar\b|moros|\bfiad/i,'f5'], [/\bcaja\b/i,'f7'],
+    [/plata|\bgast(o|os|é|a|an|ar)\b|dinero|sueldo|deudas?\b|ahorr/i,'f1'], [/\bboletas?\b|escane|foto de (la |mis )?boleta/i,'f9'],
+    [/vencimiento|\bvenc(e|en|i[oó])\b|olvid\w* (de )?pagar|cuentas por pagar/i,'f2'],
+    [/ganancia|cu[aá]nto gano|\bmargen|utilidad/i,'f3'], [/dashboard|indicadores|\bkpi/i,'f10'], [/cu[aá]nto cobr|mis precios|calcular (el |mis )?precio/i,'f4'],
+    [/me deben|\bcobrar\b|moros|\bfiad/i,'f5'], [/\bcaja\b/i,'f7'], [/receta|cada plato/i,'f8'],
     [/\bstock|inventario|bodega|mercader[ií]a/i,'i1'], [/proveedor/i,'i5'],
-    [/despacho|\benv[ií]os?\b|reparto|repartir|delivery|\brutas?\b|transporte/i,'l1'],
-    [/turnos?\b|asistencia|atrasos?\b|liquidaci|contratos? de trabajo/i,'h1'], [/contratar|postulante|trabajadores? nuevos?|personal nuevo/i,'h4'],
-    [/formaliz|inicio de actividades|\bsii\b|impuesto|\biva\b|declaraci[oó]n/i,'g2'], [/\bboletas?\b|\bfacturas?\b/i,'g3'], [/patente|permisos?\b|municipal/i,'g4'],
-    [/\bseguros\b|seguro (contra|para mi|de (incendio|robo|vida|salud|auto|mi))|p[oó]liza/i,'s3'], [/documentos/i,'s2'],
-    [/rese[ñn]as?|estrellas|calificaci/i,'r1'], [/google maps|\bmapas?\b|ubicaci[oó]n|no me encuentran|direcci[oó]n/i,'u1'],
-    [/\bredes\b|instagram|tiktok|facebook|publicar/i,'m1'], [/anuncios?\b|publicidad/i,'m5'], [/\blogo\b|mi marca|\bimagen\b/i,'m3'],
-    [/vendo poco|no vendo|pocas ventas|vender m[aá]s|clientes nuevos|pocos clientes/i,'v1'], [/no vuelven|fideliz|tarjeta de puntos/i,'v4'], [/p[aá]gina web|sitio web/i,'v5'],
-    [/me preguntan|mismas preguntas|responder|mensajes|whatsapp/i,'a1'], [/reclamos?\b|quejas?\b/i,'a4'],
-    [/reservas?\b|\bcitas?\b|agendar|agenda de/i,'o1'], [/\bmen[uú]\b|\bcarta\b/i,'o3'], [/\bcocina\b|comanda/i,'o4'], [/a mano|repetitiv|automatiz|no me alcanza el tiempo/i,'o5'],
-    [/tengo una idea|mi idea|emprender|empezar (un|mi) negocio|crear (un|mi) negocio/i,'c1'], [/nombre (para|de|del) (mi )?negocio|nombre y logo/i,'c2'],
-    [/cotizaci/i,'v10'], [/recomiend|referid/i,'v11'], [/encuesta|qu[eé] piensan|opinan de/i,'r4'], [/receta|cada plato/i,'f8'],
-    [/veh[ií]culo|cami[oó]n|camioneta|combustible|bencina|\bflota/i,'l6'], [/\btareas?\b/i,'h6'], [/registro de (mis )?clientes|base de datos|historial/i,'a5'], [/\bfilas?\b|tiempo de espera|esperar/i,'o6']
+    [/despacho|\benv[ií]os?\b|reparto|repartir|delivery|\brutas?\b|transporte/i,'l1'], [/veh[ií]culo|cami[oó]n|camioneta|combustible|bencina|\bflota/i,'l6'],
+    [/turnos?\b|carpeta/i,'h1'], [/reloj control|marca(r|ci[oó]n) (de )?asistencia|asistencia|atrasos?\b/i,'h8'], [/liquidaci|vacaciones/i,'h7'],
+    [/contratar|postulante|trabajadores? nuevos?|personal nuevo/i,'h4'], [/inducci|capacitar/i,'h5'], [/\btareas?\b/i,'h6'],
+    [/\bdocumentos\b|patente|permisos?\b/i,'s1'],
+    [/rese[ñn]as?|estrellas|calificaci/i,'r1'], [/encuesta|qu[eé] piensan|opinan de/i,'r4'], [/google maps|\bmapas?\b|ubicaci[oó]n|no me encuentran|direcci[oó]n/i,'u1'],
+    [/\bseo\b|salir en google|aparecer en google|no aparezco en google/i,'v15'],
+    [/\bredes\b|instagram|tiktok|facebook|publicar/i,'m1'], [/anuncios?\b|publicidad/i,'m5'], [/mi marca|\bimagen\b/i,'m3'], [/\blogo\b/i,'c2'],
+    [/descripciones|escribir (las )?publicaciones|contenido/i,'m6'],
+    [/vendo poco|no vendo|pocas ventas|vender m[aá]s|clientes nuevos|pocos clientes/i,'v1'], [/no vuelven|fideliz|tarjeta de puntos/i,'v4'],
+    [/p[aá]gina web|sitio web|primera p[aá]gina/i,'v5'], [/web (vieja|antigua|lenta)|p[aá]gina (vieja|antigua|lenta)|redise/i,'v14'],
+    [/webpay|mercado ?pago|pago (en l[ií]nea|con tarjeta)|cobrar en l[ií]nea|tienda (online|en l[ií]nea)/i,'v12'],
+    [/portafolio|mis trabajos/i,'v9'], [/cursos?\b|clases|membres/i,'v16'], [/eventos?\b|inscripci/i,'v17'], [/gift ?cards?|tarjetas? de regalo/i,'v13'],
+    [/cotizaci/i,'v10'], [/recomiend|referid/i,'v11'],
+    [/me preguntan|mismas preguntas|chatbot|asistente/i,'a1'], [/whatsapp|responder|mensajes/i,'a6'], [/reclamos?\b|quejas?\b/i,'a4'], [/registro de (mis )?clientes|base de datos|historial/i,'a5'],
+    [/reservas?\b|\bcitas?\b|agendar|agenda de/i,'o1'], [/\bmen[uú]\b|\bcarta\b/i,'o3'], [/garz[oó]n|garzones|meseros?|\bmesas\b/i,'o8'], [/\bcocina\b|comanda/i,'o4'],
+    [/\bfilas?\b|tiempo de espera|esperar/i,'o6'], [/digit|facturas?|gu[ií]as? de despacho|formularios?/i,'o7'], [/a mano|repetitiv|automatiz|no me alcanza el tiempo/i,'o5']
   ];
   var URG = [
     {id:'sin', t:'Sin apuro', d:'Cuando se pueda'},
@@ -526,8 +550,8 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     if(st.paso===0){
       h = '<div class="cx-hello"><div class="logo" aria-hidden="true"><span>mc</span><i></i></div>'+
         '<h2 id="cx-title">Haz una consulta gratis y descubre qué necesitas</h2>'+
-        '<p class="sub">Responde unas preguntas rápidas sobre tu negocio, tu idea o tus finanzas. Al final te digo qué problemas tienes, cómo resolverlos y cuánto costaría.</p>'+
-        '<ul class="cx-list"><li>Ventas, redes, reseñas y clientes</li><li>Finanzas, stock, despachos y transporte</li><li>Personal, reservas, documentos y atención</li></ul>'+
+        '<p class="sub">Responde unas preguntas rápidas sobre tu negocio o emprendimiento. Al final te digo qué web, app o inteligencia artificial te sirve, qué resuelve y cuánto cuesta.</p>'+
+        '<ul class="cx-list"><li>Sitios web, tiendas y ventas</li><li>Apps de gastos, stock, despachos y personal</li><li>Inteligencia artificial y automatización</li></ul>'+
         '<div class="actions"><button type="button" class="btn btn-primary" data-act="next">Comenzar consulta</button><button type="button" class="btn btn-ghost" data-act="skip">Omitir</button></div>'+
         '<p class="note" style="margin:0">Toma 1 minuto. Puedes volver cuando quieras con el botón flotante.</p></div>';
     } else if(st.paso===1){
@@ -603,7 +627,6 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       L.push((i+1)+'. '+s.t+' — '+rango(s.p,s.m)+(s.x?' '+s.x:'')+' (plazo '+s.pz+')');
       L.push('   Resuelve: '+g.probs.join('; '));
     });
-    externos.forEach(function(g){ L.push('* Asesoría contable (servicio aparte): '+g.probs.join('; ')); });
     L.push('');
     if(max) L.push('Cotización estimada: '+clp(min)+' – '+clp(max)+(mes[1]?' + '+rango(mes,true):''));
     if(st.urg) L.push('Plazo: '+URG.filter(function(u){return u.id===st.urg;})[0].t);
@@ -661,36 +684,42 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     ope: ico('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8.5 15l2 2 4-4"/>'),
     crear: ico('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/>'),
     mkt: ico('<path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8.5a5 5 0 0 1 0 7M19.5 6a8.5 8.5 0 0 1 0 12"/>'),
-    man: ico('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5a2 2 0 0 0 3 3l5.8-5.8a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/>')
+    man: ico('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5a2 2 0 0 0 3 3l5.8-5.8a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/>'),
+    ia: ico('<path d="M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>'),
+    rest: ico('<path d="M7 3v18M4.5 3v5a2.5 2.5 0 0 0 5 0V3"/><path d="M17.5 21V3c-2 1.2-3.5 3.6-3.5 7v4h3.5"/>')
   };
   function it(t,h,pz,p,o){ o=o||{}; return {t:t,h:h,pz:pz,p:p,pre:o.pre,m:o.m,txt:o.txt}; }
   function deSol(k){ var s=SOL[k]; return {t:s.t,h:s.h,pz:s.pz,p:s.p,m:s.m}; }
   var CATS = [
-    {id:'web', i:'web', t:'Sitios web', d:'Tu negocio en internet, listo para vender por WhatsApp.', items:[
+    {id:'web', i:'web', t:'Sitios web y tiendas', d:'Tu negocio en internet, listo para vender.', items:[
       it('Landing page','Una página de presentación o venta con botón de WhatsApp.','3–5 días',[80000,120000]),
       it('Catálogo con pedido por WhatsApp','Hasta 50 productos, carrito y precios editables desde Google Sheets.','7–10 días',[90000,120000]),
+      deSol('tienda'),
       it('Sitio informativo','Hasta 5 secciones para presentar tu empresa.','10–15 días',[100000,120000]),
-      it('Menú digital con QR','Para restaurantes, con código QR listo para imprimir.','3–5 días',[60000,120000]),
-      it('Productos extra','Cada 50 productos adicionales en el catálogo.','—',[20000,20000],{pre:'+ '})]},
-    {id:'apps', i:'app', t:'Apps e inteligencia artificial', d:'Tu sitio como app y asistentes que atienden por ti.', items:[
+      deSol('portafolio'), deSol('eventos'), deSol('cursos'), deSol('rediseno'), deSol('seo'),
       it('App instalable','Tu sitio se instala en el celular como una app.','+2–5 días',[50000,50000],{pre:'+ '}),
-      it('Asesor guiado','Preguntas que recomiendan el producto ideal al cliente.','+2–5 días',[40000,60000],{pre:'+ '}),
-      it('Asistente con IA','Responde y recomienda a cualquier hora. El uso mensual se paga aparte.','10–15 días',[100000,150000]),
+      it('Productos extra','Cada 50 productos adicionales en el catálogo.','—',[20000,20000],{pre:'+ '}),
       it('Dominio .cl','Gestión de tu dirección web propia.','—',null,{txt:'NIC + $15.000'})]},
-    {id:'ventas', i:'ventas', t:'Ventas y clientes', d:'Que te compren más y vuelvan.', items:['fidelizacion','referidos','cotizador','clientes','reclamos','whatsapp'].map(deSol)},
-    {id:'rep', i:'rep', t:'Reseñas y visibilidad', d:'Más estrellas y que te encuentren cerca.', items:['resenas','encuesta','maps'].map(deSol)},
-    {id:'fin', i:'fin', t:'Finanzas y cobranza', d:'Sabe cuánto ganas y dónde se va la plata.', items:['gastos','pagos','panel','costos','recetas','cobranza'].map(deSol)},
+    {id:'ia', i:'ia', t:'Inteligencia artificial', d:'Asistentes y apps que trabajan por ti.', items:[
+      deSol('ia'), deSol('chatwa'), deSol('escaneo'), deSol('docsia'), deSol('textosia'),
+      it('Asesor guiado','Preguntas que recomiendan el producto ideal al cliente.','+2–5 días',[40000,60000],{pre:'+ '})]},
+    {id:'ventas', i:'ventas', t:'Ventas y clientes', d:'Que te compren más y vuelvan.', items:['fidelizacion','referidos','cotizador','giftcard','clientes','reclamos','whatsapp'].map(deSol)},
+    {id:'rep', i:'rep', t:'Reseñas y visibilidad', d:'Más estrellas y que te encuentren.', items:['resenas','encuesta','maps'].map(deSol)},
+    {id:'fin', i:'fin', t:'Control de gastos y finanzas', d:'Apps para saber dónde se va la plata.', items:['gastos','escaneo','pagos','panel','dashboard','costos','cobranza'].map(deSol)},
     {id:'log', i:'log', t:'Stock, despachos y transporte', d:'Inventario y repartos en orden.', items:['stock','compras','despachos','flota'].map(deSol)},
-    {id:'rrhh', i:'rrhh', t:'Personal y equipo', d:'Turnos, tareas y contratación sin papeles.', items:['personal','tareas','reclutamiento','manual'].map(deSol)},
-    {id:'ope', i:'ope', t:'Operación diaria', d:'Reservas, filas, cocina y fechas clave.', items:['reservas','fila','comandas','vencimientos','automatiza'].map(deSol)},
-    {id:'crear', i:'crear', t:'Crear tu negocio', d:'De la idea al lanzamiento.', items:['lanzamiento','marca','estudio'].map(deSol)},
+    {id:'rrhh', i:'rrhh', t:'Recursos humanos', d:'Asistencia, turnos y portal del trabajador.', items:['personal','asistencia','portal','tareas','reclutamiento','manual'].map(deSol)},
+    {id:'rest', i:'rest', t:'Restaurantes', d:'Carta QR, pedidos a la mesa y cocina.', items:[
+      it('Menú digital con QR','Tu carta en el celular del cliente, con QR listo para imprimir.','3–5 días',[60000,120000]),
+      deSol('mesa'), deSol('comandas'), deSol('recetas')]},
+    {id:'ope', i:'ope', t:'Reservas y operación', d:'Agenda, filas, documentos y tareas automáticas.', items:['reservas','fila','vencimientos','automatiza'].map(deSol)},
     {id:'mkt', i:'mkt', t:'Marketing y diseño', d:'Redes, anuncios y piezas con tu marca.', items:[
       it('Pieza suelta','Post, flyer o historia.','1–2 días',[8000,15000]),
       it('Textos para anuncios','3 versiones de copy listas para publicar.','1–2 días',[25000,25000]),
       it('Pack de plantillas Canva','8 diseños editables con tu marca.','3–5 días',[40000,60000]),
-      it('Embudo de venta','Estrategia y textos de cada paso, del anuncio a la venta.','5–7 días',[80000,120000]),
+      deSol('marca'),
+      it('Embudo de venta','Página, anuncio y textos de cada paso, del anuncio a la venta.','5–7 días',[80000,120000]),
       it('Redes sociales mensual','1 red, 8 publicaciones e historias. Calendario en la primera semana.','Mensual',[100000,120000],{m:true})]},
-    {id:'man', i:'man', t:'Mantención mensual', d:'Tu sitio siempre al día.', items:[
+    {id:'man', i:'man', t:'Mantención mensual', d:'Tu web y tus apps siempre al día.', items:[
       it('Básica','Cambios menores, hasta 1 hora al mes.','48 h',[15000,30000],{m:true}),
       it('Completa','Cambios, soporte y respaldo.','48 h',[35000,70000],{m:true})]}
   ];
