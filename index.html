@@ -130,6 +130,52 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
 .fab .dot{width:48px;height:48px;border-radius:50%;background:var(--navy);color:var(--sky);display:grid;place-items:center;font-size:20px;letter-spacing:-.04em}
 .fab:hover{background:#7DD3FC}
 .custom-row .price{white-space:nowrap}
+/* Catálogo en tarjetas 3D */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:16px;padding-block:24px 8px;perspective:1100px}
+.cat3d{position:relative;font:inherit;color:var(--fg);text-align:left;background:linear-gradient(155deg,#1D2B4D 0%,#121A30 100%);border:1px solid var(--line);border-radius:20px;padding:22px;min-height:210px;cursor:pointer;
+  transform-style:preserve-3d;transition:transform .18s ease-out,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.cat3d:hover,.cat3d:focus-visible{border-color:var(--sky);box-shadow:0 22px 50px rgba(0,0,0,.4)}
+.cat3d .ico{width:64px;height:64px;border-radius:18px;background:rgba(56,189,248,.14);color:var(--sky);display:grid;place-items:center;transform:translateZ(46px)}
+.cat3d .ico svg{width:34px;height:34px}
+.cat3d .nm{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.2;transform:translateZ(32px)}
+.cat3d .ds{color:var(--muted);font-size:14px;line-height:1.4;transform:translateZ(22px)}
+.cat3d .ft{margin-top:auto;display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-family:var(--mono);font-size:13px;transform:translateZ(26px)}
+.cat3d .ft b{color:var(--sky);font-weight:500}
+.cat3d .ft span{color:var(--muted)}
+.cat3d .glare{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--gx,30%) var(--gy,0%),rgba(255,255,255,.13),transparent 60%)}
+@keyframes flotar{0%,100%{transform:rotateX(5deg) rotateY(-7deg) translateY(0)}50%{transform:rotateX(-4deg) rotateY(7deg) translateY(-6px)}}
+@media (prefers-reduced-motion:no-preference){.cat3d.idle{animation:flotar 7s ease-in-out infinite}}
+.cat-view{padding-block:20px 8px}
+@media (prefers-reduced-motion:no-preference){.cat-view{animation:entra .28s ease-out}}
+@keyframes entra{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cat-bar{display:flex;gap:10px;align-items:center}
+.cat-back{flex:0 0 auto;font:inherit;font-weight:700;font-size:14px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer}
+.cat-back:hover{border-color:var(--sky)}
+.cat-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;min-width:0;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.tab{flex:0 0 auto;font:inherit;font-size:14px;font-weight:700;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px 8px 10px;display:inline-flex;gap:8px;align-items:center;cursor:pointer;min-height:44px;white-space:nowrap}
+.tab svg{width:20px;height:20px}
+.tab:hover{color:var(--fg);border-color:var(--sky)}
+.tab[aria-pressed="true"]{background:var(--sky);color:var(--navy);border-color:var(--sky)}
+.cat-head{display:flex;gap:16px;align-items:center;margin:18px 0 6px}
+.cat-head .ico{flex:0 0 auto;width:60px;height:60px;border-radius:18px;background:rgba(56,189,248,.14);color:var(--sky);display:grid;place-items:center}
+.cat-head .ico svg{width:32px;height:32px}
+.cat-head h3{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.cat-head p{margin:2px 0 0;color:var(--muted)}
+.cat-cta{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:18px;border:1px dashed var(--line);border-radius:16px}
+.cat-cta p{margin:0;color:var(--muted)}
+@media (max-width:720px){
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .cat3d{min-height:180px;padding:16px;border-radius:18px}
+  .cat3d .ico{width:52px;height:52px;border-radius:15px}.cat3d .ico svg{width:28px;height:28px}
+  .cat3d .nm{font-size:17px}
+  .cat3d .ds{display:none}
+  .cat3d .ft{flex-direction:column;gap:2px}
+  .cat-bar{flex-direction:column;align-items:stretch}
+  .cat-back{align-self:flex-start}
+  .cat-head h3{font-size:22px}
+}
+@media (max-width:340px){.cats{grid-template-columns:1fr}}
+
 @media (max-width:720px){
   .cx{padding:22px 18px}
   .sol{grid-template-columns:1fr}
@@ -171,46 +217,10 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   <section id="servicios" aria-labelledby="t-serv">
     <div class="intro">
       <h2 id="t-serv">Servicios y precios</h2>
-      <p>Cada servicio tiene un rango: el mínimo es la versión simple y el máximo la más completa. Plazos en días hábiles.</p>
+      <p>Toca una categoría para ver sus servicios. Cada precio va de la versión simple a la más completa; plazos en días hábiles.</p>
     </div>
 
-    <div class="cat">
-      <h3>Sitios web</h3>
-      <div class="colhead" aria-hidden="true"><span>Servicio</span><span>Plazo</span><span>Precio (CLP)</span></div>
-      <div class="row"><div class="info"><div class="name">Landing page</div><div class="desc">Una página de presentación o venta con botón de WhatsApp.</div></div><div class="time">3–5 días</div><div class="price">$80.000 – $120.000</div></div>
-      <div class="row"><div class="info"><div class="name">Catálogo con pedido por WhatsApp</div><div class="desc">Hasta 50 productos, carrito y precios editables desde Google Sheets.</div></div><div class="time">7–10 días</div><div class="price">$90.000 – $120.000</div></div>
-      <div class="row"><div class="info"><div class="name">Sitio informativo</div><div class="desc">Hasta 5 secciones para presentar tu empresa.</div></div><div class="time">10–15 días</div><div class="price">$100.000 – $120.000</div></div>
-      <div class="row"><div class="info"><div class="name">Menú digital con QR</div><div class="desc">Para restaurantes, con código QR listo para imprimir.</div></div><div class="time">3–5 días</div><div class="price">$60.000 – $120.000</div></div>
-      <div class="row"><div class="info"><div class="name">Productos extra</div><div class="desc">Cada 50 productos adicionales en el catálogo.</div></div><div class="time">—</div><div class="price">$20.000</div></div>
-    </div>
-
-    <div class="cat">
-      <h3>Apps y extras</h3>
-      <div class="row"><div class="info"><div class="name">App instalable</div><div class="desc">Tu sitio se instala en el celular como una app.</div></div><div class="time">+2–5 días</div><div class="price">+ $50.000</div></div>
-      <div class="row"><div class="info"><div class="name">Asesor guiado</div><div class="desc">Preguntas que recomiendan el producto ideal al cliente.</div></div><div class="time">+2–5 días</div><div class="price">+ $40.000 – $60.000</div></div>
-      <div class="row"><div class="info"><div class="name">Asistente con IA</div><div class="desc">Chat inteligente para tu negocio. El uso mensual se paga aparte.</div></div><div class="time">10–15 días</div><div class="price">$100.000 – $150.000</div></div>
-      <div class="row"><div class="info"><div class="name">Dominio .cl</div><div class="desc">Gestión de tu dirección web propia.</div></div><div class="time">—</div><div class="price">NIC + $15.000</div></div>
-    </div>
-
-    <div class="cat">
-      <h3>Soluciones a medida</h3>
-      <div id="medida"></div>
-    </div>
-
-    <div class="cat">
-      <h3>Marketing y diseño</h3>
-      <div class="row"><div class="info"><div class="name">Pieza suelta</div><div class="desc">Post, flyer o historia.</div></div><div class="time">1–2 días</div><div class="price">$8.000 – $15.000</div></div>
-      <div class="row"><div class="info"><div class="name">Textos para anuncios</div><div class="desc">3 versiones de copy listas para publicar.</div></div><div class="time">1–2 días</div><div class="price">$25.000</div></div>
-      <div class="row"><div class="info"><div class="name">Pack de plantillas Canva</div><div class="desc">8 diseños editables con tu marca.</div></div><div class="time">3–5 días</div><div class="price">$40.000 – $60.000</div></div>
-      <div class="row"><div class="info"><div class="name">Embudo de venta</div><div class="desc">Estrategia y textos de cada paso, del anuncio a la venta.</div></div><div class="time">5–7 días</div><div class="price">$80.000 – $120.000</div></div>
-      <div class="row"><div class="info"><div class="name">Redes sociales mensual</div><div class="desc">1 red, 8 publicaciones e historias. Calendario en la primera semana.</div></div><div class="time">Mensual</div><div class="price">$100.000 – $120.000</div></div>
-    </div>
-
-    <div class="cat">
-      <h3>Mantención mensual</h3>
-      <div class="row"><div class="info"><div class="name">Básica</div><div class="desc">Cambios menores, hasta 1 hora al mes.</div></div><div class="time">48 h</div><div class="price">$15.000 – $30.000</div></div>
-      <div class="row"><div class="info"><div class="name">Completa</div><div class="desc">Cambios, soporte y respaldo.</div></div><div class="time">48 h</div><div class="price">$35.000 – $70.000</div></div>
-    </div>
+    <div id="catalogo"></div>
   </section>
 
   <section class="pref" aria-labelledby="t-pref">
@@ -483,7 +493,7 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   document.getElementById('cx-close').addEventListener('click', function(){ cerrar(false); });
   ov.addEventListener('click', function(e){ if(e.target===ov) cerrar(false); });
   fab.addEventListener('click', abrir);
-  Array.prototype.forEach.call(document.querySelectorAll('[data-open-consulta]'), function(b){ b.addEventListener('click', abrir); });
+  document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-open-consulta]'); if(b) abrir(); });
 
   function resultado(){
     var orden = [], grupos = {}, vistos = {};
@@ -636,13 +646,111 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
     if(act==='back'){ guardar(); st.paso--; render(); arriba(); }
   });
 
-  /* Soluciones a medida en la lista de precios */
-  var cont = document.getElementById('medida');
-  if(cont){
-    var base = {embudo:1,catalogo:1,landing:1,asesor:1,redes:1,canva:1,anuncios:1,ia:1,menu:1};
-    cont.innerHTML = Object.keys(SOL).filter(function(k){return !base[k] && !SOL[k].ext;}).map(function(k){var s=SOL[k];
-      return '<div class="row custom-row"><div class="info"><div class="name">'+esc(s.t)+'</div><div class="desc">'+esc(s.h)+'</div></div><div class="time">'+esc(s.pz)+'</div><div class="price">'+rango(s.p,s.m)+'</div></div>';}).join('');
+  /* ===== Catálogo en tarjetas 3D ===== */
+  function ico(d){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>'; }
+  var ICO = {
+    web: ico('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M3 8h18"/>'),
+    app: ico('<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/><path d="M19.5 6.5l1-1M20 10h1.5M4.5 6.5l-1-1M4 10H2.5"/>'),
+    ventas: ico('<path d="M5 8h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>'),
+    rep: ico('<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>'),
+    fin: ico('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'),
+    log: ico('<path d="M2 6h11v10H2zM13 10h4.5l3.5 3.5V16h-8z"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>'),
+    rrhh: ico('<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9-.3 5 2 5 4.8"/>'),
+    ope: ico('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8.5 15l2 2 4-4"/>'),
+    crear: ico('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/>'),
+    mkt: ico('<path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8.5a5 5 0 0 1 0 7M19.5 6a8.5 8.5 0 0 1 0 12"/>'),
+    man: ico('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5a2 2 0 0 0 3 3l5.8-5.8a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/>')
+  };
+  function it(t,h,pz,p,o){ o=o||{}; return {t:t,h:h,pz:pz,p:p,pre:o.pre,m:o.m,txt:o.txt}; }
+  function deSol(k){ var s=SOL[k]; return {t:s.t,h:s.h,pz:s.pz,p:s.p,m:s.m}; }
+  var CATS = [
+    {id:'web', i:'web', t:'Sitios web', d:'Tu negocio en internet, listo para vender por WhatsApp.', items:[
+      it('Landing page','Una página de presentación o venta con botón de WhatsApp.','3–5 días',[80000,120000]),
+      it('Catálogo con pedido por WhatsApp','Hasta 50 productos, carrito y precios editables desde Google Sheets.','7–10 días',[90000,120000]),
+      it('Sitio informativo','Hasta 5 secciones para presentar tu empresa.','10–15 días',[100000,120000]),
+      it('Menú digital con QR','Para restaurantes, con código QR listo para imprimir.','3–5 días',[60000,120000]),
+      it('Productos extra','Cada 50 productos adicionales en el catálogo.','—',[20000,20000],{pre:'+ '})]},
+    {id:'apps', i:'app', t:'Apps e inteligencia artificial', d:'Tu sitio como app y asistentes que atienden por ti.', items:[
+      it('App instalable','Tu sitio se instala en el celular como una app.','+2–5 días',[50000,50000],{pre:'+ '}),
+      it('Asesor guiado','Preguntas que recomiendan el producto ideal al cliente.','+2–5 días',[40000,60000],{pre:'+ '}),
+      it('Asistente con IA','Responde y recomienda a cualquier hora. El uso mensual se paga aparte.','10–15 días',[100000,150000]),
+      it('Dominio .cl','Gestión de tu dirección web propia.','—',null,{txt:'NIC + $15.000'})]},
+    {id:'ventas', i:'ventas', t:'Ventas y clientes', d:'Que te compren más y vuelvan.', items:['fidelizacion','referidos','cotizador','clientes','reclamos','whatsapp'].map(deSol)},
+    {id:'rep', i:'rep', t:'Reseñas y visibilidad', d:'Más estrellas y que te encuentren cerca.', items:['resenas','encuesta','maps'].map(deSol)},
+    {id:'fin', i:'fin', t:'Finanzas y cobranza', d:'Sabe cuánto ganas y dónde se va la plata.', items:['gastos','pagos','panel','costos','recetas','cobranza'].map(deSol)},
+    {id:'log', i:'log', t:'Stock, despachos y transporte', d:'Inventario y repartos en orden.', items:['stock','compras','despachos','flota'].map(deSol)},
+    {id:'rrhh', i:'rrhh', t:'Personal y equipo', d:'Turnos, tareas y contratación sin papeles.', items:['personal','tareas','reclutamiento','manual'].map(deSol)},
+    {id:'ope', i:'ope', t:'Operación diaria', d:'Reservas, filas, cocina y fechas clave.', items:['reservas','fila','comandas','vencimientos','automatiza'].map(deSol)},
+    {id:'crear', i:'crear', t:'Crear tu negocio', d:'De la idea al lanzamiento.', items:['lanzamiento','marca','estudio'].map(deSol)},
+    {id:'mkt', i:'mkt', t:'Marketing y diseño', d:'Redes, anuncios y piezas con tu marca.', items:[
+      it('Pieza suelta','Post, flyer o historia.','1–2 días',[8000,15000]),
+      it('Textos para anuncios','3 versiones de copy listas para publicar.','1–2 días',[25000,25000]),
+      it('Pack de plantillas Canva','8 diseños editables con tu marca.','3–5 días',[40000,60000]),
+      it('Embudo de venta','Estrategia y textos de cada paso, del anuncio a la venta.','5–7 días',[80000,120000]),
+      it('Redes sociales mensual','1 red, 8 publicaciones e historias. Calendario en la primera semana.','Mensual',[100000,120000],{m:true})]},
+    {id:'man', i:'man', t:'Mantención mensual', d:'Tu sitio siempre al día.', items:[
+      it('Básica','Cambios menores, hasta 1 hora al mes.','48 h',[15000,30000],{m:true}),
+      it('Completa','Cambios, soporte y respaldo.','48 h',[35000,70000],{m:true})]}
+  ];
+  function precioItem(x){ return x.txt ? x.txt : (x.pre||'')+rango(x.p,x.m); }
+  function desde(c){ var v = c.items.filter(function(x){return x.p && !x.pre;}).map(function(x){return x.p[0];}); return v.length ? 'desde '+clp(Math.min.apply(null,v))+(c.items.every(function(x){return x.m;})?'/mes':'') : ''; }
+  var catBox = document.getElementById('catalogo'), catActual = null, catPushed = false;
+  var animar = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  function verTodas(){
+    catActual = null;
+    catBox.innerHTML = '<div class="cats">'+CATS.map(function(c,i){
+      return '<button type="button" class="cat3d idle" data-cat="'+c.id+'" style="animation-delay:-'+(i*0.9)+'s" aria-label="'+esc(c.t)+': ver '+c.items.length+' servicios">'+
+        '<span class="glare" aria-hidden="true"></span><span class="ico">'+ICO[c.i]+'</span><span class="nm">'+esc(c.t)+'</span><span class="ds">'+esc(c.d)+'</span>'+
+        '<span class="ft"><b>'+c.items.length+' servicio'+(c.items.length>1?'s':'')+'</b><span>'+desde(c)+'</span></span></button>';
+    }).join('')+'</div>';
   }
+  function verCat(id, desdeAtras){
+    var c = CATS.filter(function(x){return x.id===id;})[0]; if(!c) return;
+    var primera = !catActual;
+    catActual = id;
+    catBox.innerHTML = '<div class="cat-view"><div class="cat-bar"><button type="button" class="cat-back" data-cat-back>← Todas</button>'+
+      '<div class="cat-tabs" role="toolbar" aria-label="Categorías">'+CATS.map(function(x){return '<button type="button" class="tab" data-tab="'+x.id+'" aria-pressed="'+(x.id===id)+'">'+ICO[x.i]+esc(x.t)+'</button>';}).join('')+'</div></div>'+
+      '<div class="cat-head"><span class="ico">'+ICO[c.i]+'</span><div><h3 id="cat-title" tabindex="-1">'+esc(c.t)+'</h3><p>'+esc(c.d)+'</p></div></div>'+
+      '<div class="colhead" aria-hidden="true"><span>Servicio</span><span>Plazo</span><span>Precio (CLP)</span></div>'+
+      c.items.map(function(x){return '<div class="row"><div class="info"><div class="name">'+esc(x.t)+'</div><div class="desc">'+esc(x.h)+'</div></div><div class="time">'+esc(x.pz)+'</div><div class="price">'+precioItem(x)+'</div></div>';}).join('')+
+      '<div class="cat-cta"><p>¿No sabes cuál necesitas? Te lo digo en 1 minuto.</p><button type="button" class="btn btn-primary" data-open-consulta>Hacer la consulta gratis</button></div></div>';
+    var tab = catBox.querySelector('.tab[aria-pressed="true"]');
+    if(tab && tab.scrollIntoView){ try{ tab.scrollIntoView({block:'nearest',inline:'center'}); }catch(e){} }
+    if(primera && !desdeAtras && !catPushed){ try{ history.pushState({cat:1},''); catPushed=true; }catch(e){} }
+    var sec = document.getElementById('servicios'); if(sec && sec.getBoundingClientRect().top<0){ sec.scrollIntoView({block:'start'}); }
+    var h = document.getElementById('cat-title'); if(h){ try{ h.focus({preventScroll:true}); }catch(e){} }
+  }
+  function cerrarCat(desdeAtras){
+    var vuelta = catActual;
+    verTodas();
+    if(catPushed && !desdeAtras){ catPushed=false; try{ history.back(); }catch(e){} } else { catPushed=false; }
+    var b = catBox.querySelector('[data-cat="'+vuelta+'"]'); if(b) b.focus({preventScroll:false});
+  }
+  window.addEventListener('popstate', function(){ if(catActual && ov.hidden && !(history.state && history.state.cat)){ catPushed=false; cerrarCat(true); } });
+  catBox.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    if(b.hasAttribute('data-cat')){ verCat(b.getAttribute('data-cat')); return; }
+    if(b.hasAttribute('data-tab')){ verCat(b.getAttribute('data-tab')); return; }
+    if(b.hasAttribute('data-cat-back')){ cerrarCat(false); }
+  });
+  /* Inclinación 3D al pasar el mouse o el dedo */
+  function inclinar(e){
+    if(e.pointerType==='touch') return;
+    var card = e.target.closest && e.target.closest('.cat3d'); if(!card || !animar) return;
+    var r = card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    card.classList.remove('idle');
+    card.style.transform = 'rotateX('+((0.5-y)*16).toFixed(1)+'deg) rotateY('+((x-0.5)*18).toFixed(1)+'deg) translateZ(8px)';
+    card.style.setProperty('--gx',(x*100).toFixed(0)+'%'); card.style.setProperty('--gy',(y*100).toFixed(0)+'%');
+  }
+  function soltar(e){
+    var card = e.target.closest && e.target.closest('.cat3d'); if(!card) return;
+    if(e.relatedTarget && card.contains(e.relatedTarget)) return;
+    card.style.transform=''; card.classList.add('idle');
+  }
+  if(window.PointerEvent){ catBox.addEventListener('pointermove', inclinar); catBox.addEventListener('pointerout', soltar); catBox.addEventListener('pointercancel', soltar); }
+  else { catBox.addEventListener('mousemove', inclinar); catBox.addEventListener('mouseout', soltar); }
+  verTodas();
 
   abrir();
 })();
