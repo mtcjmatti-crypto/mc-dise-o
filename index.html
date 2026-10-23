@@ -77,42 +77,61 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .contact dd{margin:0;font-weight:500;user-select:all}
 .foot{color:var(--muted);font-size:13px;padding-bottom:32px}
 
-/* Diagnóstico */
-.diag{margin-block:40px 8px;background:var(--navy-2);border:1px solid var(--line);border-radius:20px;padding:28px}
-.diag-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline}
-.diag-head h2{font-size:28px;font-weight:800;letter-spacing:-.02em}
-.diag-head p{color:var(--muted);margin:6px 0 0;max-width:56ch}
-.step-tag{font-family:var(--mono);font-size:13px;color:var(--sky);white-space:nowrap}
-.bar{height:4px;background:var(--line);border-radius:4px;margin:18px 0 22px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--sky);width:25%;transition:width .25s}
-.q{font-size:20px;font-weight:700;margin:0 0 6px}
+/* Consulta gratis (modal + botón flotante) */
+.cx-overlay{position:fixed;inset:0;z-index:50;background:rgba(8,13,26,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;
+  padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.cx{position:relative;width:100%;max-width:760px;max-height:100%;overflow:auto;background:var(--navy-2);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.cx-close{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:22px;line-height:1;cursor:pointer}
+.cx-close:hover{border-color:var(--sky)}
+.cx-hello{display:flex;flex-direction:column;gap:16px;padding-right:40px}
+.cx-hello .logo{width:72px;height:72px}.cx-hello .logo span{font-size:32px}.cx-hello .logo i{width:18px;height:18px;right:1px;bottom:5px;border-width:3px;border-color:var(--navy-2)}
+.cx h2{font-size:clamp(26px,4.5vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.cx .sub{color:var(--muted);margin:0;font-size:17px;max-width:54ch}
+.cx-list{margin:0;padding-left:20px;color:var(--muted);display:grid;gap:4px}
+.cx-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding-right:52px}
+.cx-tag{font-family:var(--mono);font-size:13px;color:var(--sky)}
+.bar{height:4px;background:var(--line);border-radius:4px;margin:14px 0 22px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sky);transition:width .25s}
+.q{font-size:21px;font-weight:800;margin:0 0 6px;letter-spacing:-.01em}
 .qhint{color:var(--muted);font-size:15px;margin:0 0 16px}
-.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
-.opt{font:inherit;text-align:left;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;min-height:48px;display:flex;flex-direction:column;gap:2px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.opt{font:inherit;text-align:left;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;min-height:48px;display:flex;flex-direction:column;gap:2px}
 .opt:hover{border-color:var(--sky)}
-.opt[aria-pressed="true"]{border-color:var(--sky);background:rgba(56,189,248,.12)}
+.opt[aria-pressed="true"]{border-color:var(--sky);background:rgba(56,189,248,.14)}
 .opt b{font-weight:700}
 .opt span{color:var(--muted);font-size:14px}
-.diag textarea,.diag input[type=text]{width:100%;font:inherit;color:var(--fg);background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.diag textarea{min-height:110px;resize:vertical}
-.diag label{display:block;font-weight:700;margin:18px 0 8px}
-.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:22px}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--sky);margin:18px 0 8px}
+.cx textarea,.cx input[type=text]{width:100%;font:inherit;color:var(--fg);background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.cx textarea{min-height:100px;resize:vertical}
+.cx label{display:block;font-weight:700;margin:18px 0 8px}
+.cx-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:22px}
 button.btn{font:inherit;font-weight:700;border:0;cursor:pointer}
 button.btn-ghost{background:transparent;border:1px solid var(--line)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.res-sum{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.chip{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
 .sol{border-top:1px solid var(--line);padding-block:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px}
-.sol .why{font-family:var(--mono);font-size:13px;color:var(--sky)}
-.sol h3{font-size:19px;font-weight:800;grid-column:1}
-.sol p{margin:0;color:var(--muted);grid-column:1}
-.sol .meta{grid-column:2;grid-row:1/span 3;text-align:right;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sol h3{font-size:18px;font-weight:800;margin:0}
+.sol .fix{margin:0;color:var(--muted);font-size:14px}
+.sol .fix b{color:var(--fg);font-weight:500}
+.sol p{margin:0}
+.sol .ok{color:var(--sky);font-size:14px}
+.sol .meta{grid-column:2;grid-row:1/span 4;text-align:right;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .sol .meta small{display:block;color:var(--muted)}
-.total{margin-top:8px;padding:18px;border-radius:14px;background:var(--navy);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline}
-.total strong{font-family:var(--mono);font-size:22px}
+.sol>*:not(.meta){grid-column:1}
+.total{margin-top:6px;padding:16px 18px;border-radius:14px;background:var(--navy);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline}
+.total strong{font-family:var(--mono);font-size:22px;font-variant-numeric:tabular-nums}
 .note{color:var(--muted);font-size:14px;margin:12px 0 0}
+.fab{position:fixed;z-index:40;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;
+  padding:6px 18px 6px 6px;border-radius:999px;border:0;background:var(--sky);color:var(--navy);font:inherit;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.fab .dot{width:48px;height:48px;border-radius:50%;background:var(--navy);color:var(--sky);display:grid;place-items:center;font-size:20px;letter-spacing:-.04em}
+.fab:hover{background:#7DD3FC}
+.custom-row .price{white-space:nowrap}
 @media (max-width:720px){
-  .diag{padding:20px}
+  .cx{padding:22px 18px}
   .sol{grid-template-columns:1fr}
   .sol .meta{grid-column:1;grid-row:auto;text-align:left}
+  .fab{padding:6px}.fab .lbl{display:none}
 }
 
 @media (max-width:720px){
@@ -140,26 +159,11 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       <p class="lead">Páginas web, catálogos con pedido por WhatsApp, menús con QR, apps y diseños para redes. Hecho por Matías Condori para negocios que quieren vender más.</p>
       <div class="actions">
         <a class="btn btn-primary" href="https://wa.me/56974629597?text=Hola%20Mat%C3%ADas%2C%20quiero%20cotizar%20un%20trabajo" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
-        <a class="btn btn-ghost" href="#diagnostico">Diagnóstico gratis</a>
+        <button type="button" class="btn btn-ghost" data-open-consulta>Consulta gratis</button>
       </div>
     </div>
   </header>
 
-  <section class="diag" id="diagnostico" aria-labelledby="t-diag">
-    <div class="diag-head">
-      <div>
-        <h2 id="t-diag">Diagnóstico gratis</h2>
-        <p>Cuéntame qué te pasa y te digo qué solución te sirve, cuánto cuesta y cuánto demora. Toma 1 minuto.</p>
-      </div>
-      <span class="step-tag" id="d-step">Paso 1 de 4</span>
-    </div>
-    <div class="bar" aria-hidden="true"><i id="d-bar"></i></div>
-    <div id="d-body" aria-live="polite"></div>
-    <div class="nav">
-      <button type="button" class="btn btn-ghost" id="d-back">Atrás</button>
-      <button type="button" class="btn btn-primary" id="d-next">Siguiente</button>
-    </div>
-  </section>
 
   <section id="servicios" aria-labelledby="t-serv">
     <div class="intro">
@@ -183,6 +187,11 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
       <div class="row"><div class="info"><div class="name">Asesor guiado</div><div class="desc">Preguntas que recomiendan el producto ideal al cliente.</div></div><div class="time">+2–5 días</div><div class="price">+ $40.000 – $60.000</div></div>
       <div class="row"><div class="info"><div class="name">Asistente con IA</div><div class="desc">Chat inteligente para tu negocio. El uso mensual se paga aparte.</div></div><div class="time">10–15 días</div><div class="price">$100.000 – $150.000</div></div>
       <div class="row"><div class="info"><div class="name">Dominio .cl</div><div class="desc">Gestión de tu dirección web propia.</div></div><div class="time">—</div><div class="price">NIC + $15.000</div></div>
+    </div>
+
+    <div class="cat">
+      <h3>Soluciones a medida</h3>
+      <div id="medida"></div>
     </div>
 
     <div class="cat">
@@ -238,168 +247,346 @@ button.btn-ghost{background:transparent;border:1px solid var(--line)}
   </footer>
   <p class="foot">Valores en pesos chilenos, actualizados a octubre de 2026.</p>
 </div>
+  <div class="cx-overlay" id="cx-overlay">
+    <div class="cx" role="dialog" aria-modal="true" aria-labelledby="cx-title" id="cx">
+      <button type="button" class="cx-close" id="cx-close" aria-label="Cerrar consulta">×</button>
+      <div id="cx-body" aria-live="polite"></div>
+    </div>
+  </div>
+  <button type="button" class="fab" id="cx-fab" hidden aria-label="Abrir consulta gratis"><span class="dot">mc</span><span class="lbl">Consulta gratis</span></button>
 <script>
 (function(){
   var WA = '56974629597';
+  var BIZ = ['emp','pyme','rest','serv'];
   var PERFILES = [
-    {id:'persona', t:'Persona natural', d:'Quiero ordenar mis finanzas o mi día a día'},
-    {id:'emprende', t:'Emprendimiento que recién parte', d:'Vendo por redes o desde la casa'},
-    {id:'negocio', t:'Negocio o tienda', d:'Tengo local, productos o stock'},
-    {id:'comida', t:'Restaurante o comida', d:'Local, delivery o venta de comida'},
-    {id:'servicios', t:'Servicios', d:'Peluquería, taller, consulta, clases, oficios'}
+    {id:'per', t:'Persona natural', d:'Quiero ordenar mis finanzas o mis cosas'},
+    {id:'crear', t:'Quiero crear un negocio', d:'Tengo una idea y quiero partir'},
+    {id:'emp', t:'Emprendimiento', d:'Vendo por redes o desde la casa'},
+    {id:'pyme', t:'Negocio, tienda o pyme', d:'Tengo local, productos o trabajadores'},
+    {id:'rest', t:'Restaurante o comida', d:'Local, delivery o venta de comida'},
+    {id:'serv', t:'Servicios', d:'Peluquería, taller, consulta, clases, oficios'}
   ];
+
+  /* Soluciones: t título, h qué hace, r resultado, p [mín, máx] CLP, pz plazo, m mensual, x nota extra */
   var SOL = {
-    finanzas:{t:'Control de gastos automático', c:'Conecto los correos de aviso de tu banco a una planilla que ordena cada compra, transferencia e ingreso por categoría. Cada semana recibes un reporte que te dice cuánto gastaste, en qué y qué día.', p:null, pz:'7–10 días'},
-    pagos:{t:'Recordatorio de pagos', c:'Una app en tu celular con tus cuentas fijas y fechas de vencimiento que te avisa antes de cada pago.', p:null, pz:'3–5 días'},
-    panel:{t:'Panel de ventas automático', c:'Tus ventas quedan en una planilla y un panel te muestra cuánto vendes por día, por producto y por mes, y cuánto te queda.', p:null, pz:'5–7 días'},
-    stock:{t:'Control de stock', c:'Cada venta descuenta del stock y te avisa cuando un producto se está acabando.', p:null, pz:'7–10 días'},
-    reservas:{t:'Agenda de reservas', c:'Una página con tus horarios libres: el cliente elige su hora y la reserva te llega ordenada por WhatsApp.', p:null, pz:'5–7 días'},
-    catalogo:{t:'Catálogo con pedido por WhatsApp', c:'Tus productos con foto y precio, carrito, y el pedido te llega completo por WhatsApp. Cambias precios desde una planilla.', p:[90000,120000], pz:'7–10 días'},
-    landing:{t:'Landing page', c:'Una página que presenta lo que haces y lleva a la gente a escribirte por WhatsApp.', p:[80000,120000], pz:'3–5 días'},
-    menu:{t:'Menú digital con QR', c:'Tu carta en el celular del cliente con un QR en la mesa. Cambias precios sin reimprimir.', p:[60000,120000], pz:'3–5 días'},
-    ia:{t:'Asistente con IA', c:'Responde las preguntas frecuentes de tus clientes a cualquier hora y les recomienda qué comprar.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
-    asesor:{t:'Asesor guiado', c:'Unas preguntas simples que recomiendan el producto ideal a cada cliente dentro de tu catálogo.', p:[40000,60000], pz:'+2–5 días', x:'sobre el catálogo'},
-    embudo:{t:'Embudo de venta + anuncios', c:'Te armo el camino completo: anuncio, página y mensaje de cierre, con los textos listos para publicar.', p:[80000,120000], pz:'5–7 días'},
-    redes:{t:'Redes sociales mensual', c:'Me encargo de 8 publicaciones e historias al mes con un calendario que apruebas tú.', p:[100000,120000], pz:'mensual', m:true},
-    canva:{t:'Pack de plantillas Canva', c:'8 diseños con tu marca que puedes editar tú mismo para publicar con buena imagen.', p:[40000,60000], pz:'3–5 días'}
+    embudo:{t:'Embudo de venta + anuncios', h:'Armo el camino completo: anuncio, página y mensaje de cierre, con los textos listos.', r:'Te llegan clientes nuevos todas las semanas sin depender del boca a boca.', p:[80000,120000], pz:'5–7 días'},
+    catalogo:{t:'Catálogo con pedido por WhatsApp', h:'Tus productos con foto y precio, carrito y el pedido completo directo a tu WhatsApp.', r:'Los pedidos llegan ordenados y vendes las 24 horas sin pagar comisión a apps.', p:[90000,120000], pz:'7–10 días'},
+    landing:{t:'Página web (landing)', h:'Una página que presenta lo que haces y lleva a la gente a escribirte.', r:'Te encuentran y te contactan sin que tengas que explicar todo cada vez.', p:[80000,120000], pz:'3–5 días'},
+    asesor:{t:'Asesor guiado', h:'Unas preguntas simples recomiendan el producto ideal a cada cliente dentro de tu catálogo.', r:'El cliente compra con confianza y tú respondes menos dudas.', p:[40000,60000], pz:'+2–5 días', x:'sobre el catálogo'},
+    fidelizacion:{t:'Tarjeta de puntos digital', h:'Tus clientes suman puntos con cada compra y reciben promociones y recordatorios.', r:'Vuelven a comprarte más seguido.', p:[50000,90000], pz:'5–7 días'},
+    redes:{t:'Redes sociales mensual', h:'Me encargo de 8 publicaciones e historias al mes con un calendario que apruebas tú.', r:'Tus redes se mantienen activas sin que pierdas tiempo.', p:[100000,120000], pz:'mensual', m:true},
+    canva:{t:'Pack de plantillas Canva', h:'8 diseños con tu marca que puedes editar tú mismo.', r:'Publicas con imagen profesional en minutos.', p:[40000,60000], pz:'3–5 días'},
+    anuncios:{t:'Textos para anuncios', h:'3 versiones de anuncio con ganchos pensados para tu cliente.', r:'Tus anuncios atraen al cliente correcto y gastas menos.', p:[25000,25000], pz:'1–2 días'},
+    resenas:{t:'Sistema de reseñas', h:'Un QR y un mensaje automático piden la reseña al cliente feliz, más respuestas listas para las reseñas malas.', r:'Suben tus estrellas en Google y das más confianza.', p:[30000,50000], pz:'2–3 días'},
+    maps:{t:'Ficha en Google Maps', h:'Creo o corrijo tu ficha con fotos, horarios, ubicación, teléfono y enlaces.', r:'Te encuentran cuando buscan tu rubro cerca.', p:[30000,60000], pz:'2–3 días'},
+    gastos:{t:'Control de gastos automático', h:'Los correos de aviso de tu banco pasan solos a una planilla que ordena cada compra, transferencia e ingreso por categoría.', r:'Cada semana sabes cuánto gastaste, en qué y qué día.', p:[60000,100000], pz:'7–10 días'},
+    pagos:{t:'Recordatorio de pagos', h:'Una app con tus cuentas y vencimientos que te avisa antes de cada pago.', r:'No vuelves a pagar intereses ni multas por atraso.', p:[40000,70000], pz:'3–5 días'},
+    panel:{t:'Panel de ventas y caja', h:'Registras ventas y gastos en una planilla y un panel muestra el resumen del día y del mes.', r:'Sabes cuánto vendes, cuánto gastas y cuánto ganas, sin hacer cuentas.', p:[60000,100000], pz:'5–7 días'},
+    costos:{t:'Calculadora de costos y precios', h:'Ingresas tus costos y te dice el precio y la ganancia de cada producto.', r:'Cobras lo justo y cada venta te deja ganancia.', p:[40000,70000], pz:'3–5 días'},
+    cobranza:{t:'Cobranza automática', h:'Registra lo que te deben y envía recordatorios de pago a tus clientes.', r:'Cobras a tiempo sin tener que perseguir a nadie.', p:[50000,90000], pz:'5–7 días'},
+    stock:{t:'Control de stock', h:'Cada venta descuenta del stock y te avisa cuando algo se acaba o está por vencer.', r:'No te quedas sin producto ni pierdes mercadería.', p:[70000,120000], pz:'7–10 días'},
+    compras:{t:'Pedidos a proveedores', h:'Arma la lista de compra según tu stock y la deja lista para enviar a cada proveedor.', r:'Compras lo justo en minutos.', p:[50000,90000], pz:'5–7 días'},
+    despachos:{t:'Gestor de despachos', h:'Ordena los pedidos por zona, sugiere la ruta, calcula el envío y avisa al cliente cuando sale su pedido.', r:'Repartes más rápido y nadie te pregunta dónde va su pedido.', p:[70000,120000], pz:'7–10 días'},
+    personal:{t:'Gestión de personal', h:'Turnos, marcas de asistencia desde el celular y carpeta digital con contratos y liquidaciones.', r:'Controlas atrasos y tienes todo en orden para el contador o una fiscalización.', p:[60000,120000], pz:'7–10 días'},
+    reclutamiento:{t:'Postulación en línea', h:'Una página de postulación con preguntas filtro que ordena a los candidatos.', r:'Contratas más rápido y solo entrevistas a quienes calzan.', p:[50000,90000], pz:'5–7 días'},
+    manual:{t:'Manual digital de inducción', h:'Pasos, fotos y checklist de cada puesto en el celular del trabajador.', r:'El trabajador nuevo aprende solo y tú ahorras horas.', p:[40000,70000], pz:'5–7 días'},
+    tramites:{t:'Orientación de trámites, impuestos y seguros', h:'Reviso tu caso y te dejo claro qué trámites, declaraciones, documentos y seguros te corresponden.', r:'Trabajas tranquilo y sin multas.', p:[30000,60000], pz:'2–3 días'},
+    vencimientos:{t:'Agenda de vencimientos y documentos', h:'Guarda tus documentos y te avisa antes de que venzan patentes, permisos, seguros y declaraciones.', r:'No se te pasa ninguna fecha importante.', p:[40000,70000], pz:'3–5 días'},
+    ia:{t:'Asistente con IA', h:'Responde a tus clientes a cualquier hora y les recomienda qué comprar.', r:'Atiendes las 24 horas sin estar pegado al teléfono.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
+    whatsapp:{t:'WhatsApp Business configurado', h:'Catálogo, respuestas rápidas, mensaje de bienvenida y de ausencia.', r:'Respondes en segundos aunque estés ocupado.', p:[25000,40000], pz:'1–2 días'},
+    reclamos:{t:'Gestión de reclamos', h:'Un formulario registra cada reclamo y te recuerda hasta que lo cierras.', r:'Ningún reclamo queda sin respuesta.', p:[40000,70000], pz:'3–5 días'},
+    reservas:{t:'Agenda de reservas con recordatorio', h:'El cliente elige su hora en línea y recibe un recordatorio antes de su cita.', r:'Agenda ordenada y menos clientes que faltan.', p:[60000,100000], pz:'5–7 días'},
+    menu:{t:'Menú digital con QR', h:'Tu carta en el celular del cliente con un QR en la mesa.', r:'Cambias precios al instante sin reimprimir.', p:[60000,120000], pz:'3–5 días'},
+    comandas:{t:'Pedidos digitales a cocina', h:'El pedido pasa de la mesa o la caja a una pantalla en cocina, en orden.', r:'Menos errores y platos que salen más rápido.', p:[70000,120000], pz:'7–10 días'},
+    automatiza:{t:'Automatización a medida', h:'Reviso tu tarea repetitiva y la convierto en un proceso automático con planillas y avisos.', r:'Recuperas horas de trabajo cada semana.', p:[60000,120000], pz:'5–10 días'},
+    lanzamiento:{t:'Plan de lanzamiento', h:'Ordenamos tu idea: a quién le vendes, qué ofreces, a qué precio y los primeros pasos.', r:'Partes con un plan claro en vez de improvisar.', p:[60000,100000], pz:'3–5 días'},
+    marca:{t:'Marca: nombre, logo y colores', h:'Creo el nombre, el logo y la paleta de tu negocio.', r:'Te ves profesional desde el primer día.', p:[40000,80000], pz:'3–5 días'},
+    estudio:{t:'Estudio rápido de mercado', h:'Reviso tu competencia, sus precios y la demanda en tu zona.', r:'Sabes si tu idea se vende antes de invertir.', p:[40000,70000], pz:'3–5 días'}
   };
-  var PROB = [
-    {id:'plata', t:'No sé dónde se me va la plata', s:'finanzas', f:['persona','emprende']},
-    {id:'olvido', t:'Se me olvidan pagos y vencimientos', s:'pagos', f:['persona','emprende']},
-    {id:'extra', t:'Quiero vender algo o tener ingresos extra', s:'landing', f:['persona']},
-    {id:'mostrar', t:'Quiero mostrar mi trabajo de forma profesional', s:'landing', f:['persona','servicios']},
-    {id:'pocos', t:'Vendo poco o llegan pocos clientes nuevos', s:'embudo', f:['emprende','negocio','comida','servicios']},
-    {id:'precios', t:'Mis clientes no conocen mis productos ni precios', s:'catalogo', f:['emprende','negocio','comida']},
-    {id:'pedidos', t:'Los pedidos por WhatsApp se me desordenan', s:'catalogo', f:['emprende','negocio','comida']},
-    {id:'preguntas', t:'Respondo las mismas preguntas todo el día', s:'ia', f:['emprende','negocio','comida','servicios']},
-    {id:'elegir', t:'Mis clientes no saben qué producto elegir', s:'asesor', f:['emprende','negocio']},
-    {id:'tiempo', t:'No tengo tiempo para las redes sociales', s:'redes', f:['emprende','negocio','comida','servicios']},
-    {id:'imagen', t:'Mi marca se ve poco profesional', s:'canva', f:['emprende','negocio','comida','servicios']},
-    {id:'cuanto', t:'No sé cuánto vendo ni cuánto gano', s:'panel', f:['emprende','negocio','comida','servicios']},
-    {id:'stock', t:'Se me descuadra el stock', s:'stock', f:['emprende','negocio']},
-    {id:'horas', t:'Las reservas y horas me llegan desordenadas', s:'reservas', f:['servicios','comida']},
-    {id:'carta', t:'Mi menú impreso es caro de cambiar', s:'menu', f:['comida']}
+
+  /* Áreas y problemas: s solución, f perfiles (por defecto, los del área) */
+  var AREAS = [
+    {id:'ventas', t:'Ventas y clientes', f:BIZ.concat(['per','crear']), p:[
+      {id:'v1', t:'Vendo poco o llegan pocos clientes nuevos', s:'embudo', f:BIZ},
+      {id:'v2', t:'Mis clientes no conocen mis productos ni precios', s:'catalogo', f:['emp','pyme','rest']},
+      {id:'v3', t:'Los pedidos por WhatsApp se me desordenan', s:'catalogo', f:['emp','pyme','rest']},
+      {id:'v4', t:'Los clientes compran una vez y no vuelven', s:'fidelizacion', f:BIZ},
+      {id:'v5', t:'No tengo página web y siento que pierdo clientes', s:'landing', f:BIZ},
+      {id:'v6', t:'Mis clientes no saben qué producto elegir', s:'asesor', f:['emp','pyme']},
+      {id:'v7', t:'Vendo solo en mi local y quiero vender por internet', s:'catalogo', f:['pyme','rest']},
+      {id:'v8', t:'Quiero ganar ingresos extra vendiendo algo', s:'landing', f:['per']},
+      {id:'v9', t:'Quiero mostrar mi trabajo de forma profesional', s:'landing', f:['per','serv']}
+    ]},
+    {id:'mkt', t:'Marketing y redes', f:BIZ, p:[
+      {id:'m1', t:'No tengo tiempo para las redes sociales', s:'redes'},
+      {id:'m2', t:'Publico pero nadie me compra', s:'embudo'},
+      {id:'m3', t:'Mi marca se ve poco profesional', s:'canva'},
+      {id:'m4', t:'No sé qué publicar ni cuándo', s:'redes'},
+      {id:'m5', t:'Pago anuncios y no me funcionan', s:'anuncios'}
+    ]},
+    {id:'rep', t:'Reseñas y calificaciones', f:BIZ, p:[
+      {id:'r1', t:'Tengo pocas reseñas en Google', s:'resenas'},
+      {id:'r2', t:'Tengo reseñas malas y no sé cómo responder', s:'resenas'},
+      {id:'r3', t:'Mis clientes contentos no dejan reseña', s:'resenas'}
+    ]},
+    {id:'ubi', t:'Ubicación y visibilidad', f:BIZ, p:[
+      {id:'u1', t:'No aparezco en Google Maps', s:'maps'},
+      {id:'u2', t:'A la gente le cuesta encontrar mi local', s:'maps'},
+      {id:'u3', t:'Mis horarios y datos en internet están desactualizados', s:'maps'}
+    ]},
+    {id:'fin', t:'Finanzas y cobranza', f:BIZ.concat(['per']), p:[
+      {id:'f1', t:'No sé dónde se me va la plata', s:'gastos', f:['per','emp','serv']},
+      {id:'f2', t:'Se me olvidan pagos y vencimientos', s:'pagos', f:['per','emp','pyme','rest','serv']},
+      {id:'f3', t:'No sé cuánto vendo ni cuánto gano', s:'panel', f:BIZ},
+      {id:'f4', t:'No sé si mis precios me dejan ganancia', s:'costos', f:BIZ},
+      {id:'f5', t:'Me deben plata y me cuesta cobrar', s:'cobranza', f:BIZ},
+      {id:'f6', t:'Mezclo la plata personal con la del negocio', s:'gastos', f:['emp','pyme','serv']},
+      {id:'f7', t:'Mi caja no cuadra al final del día', s:'panel', f:['pyme','rest']}
+    ]},
+    {id:'inv', t:'Inventario y compras', f:['emp','pyme','rest'], p:[
+      {id:'i1', t:'Se me descuadra el stock', s:'stock'},
+      {id:'i2', t:'Se me acaban productos sin darme cuenta', s:'stock'},
+      {id:'i3', t:'Se me vencen productos o insumos', s:'stock'},
+      {id:'i4', t:'Compro de más y pierdo mercadería', s:'compras'},
+      {id:'i5', t:'Pedirle a los proveedores es un desorden', s:'compras'}
+    ]},
+    {id:'log', t:'Logística, despachos y transporte', f:['emp','pyme','rest'], p:[
+      {id:'l1', t:'Los despachos se atrasan o se pierden', s:'despachos'},
+      {id:'l2', t:'No sé qué ruta hacer para repartir', s:'despachos'},
+      {id:'l3', t:'Los clientes preguntan todo el rato dónde va su pedido', s:'despachos'},
+      {id:'l4', t:'Calcular el costo de envío me quita tiempo', s:'despachos'},
+      {id:'l5', t:'Las apps de delivery me cobran mucha comisión', s:'catalogo', f:['pyme','rest']}
+    ]},
+    {id:'rrhh', t:'Personal y RRHH', f:['emp','pyme','rest','serv'], p:[
+      {id:'h1', t:'Llevo los turnos y la asistencia en papel', s:'personal'},
+      {id:'h2', t:'Hay atrasos y faltas que no puedo controlar', s:'personal'},
+      {id:'h3', t:'Contratos y liquidaciones están desordenados', s:'personal'},
+      {id:'h4', t:'Me cuesta encontrar buenos trabajadores', s:'reclutamiento'},
+      {id:'h5', t:'Enseñarle a cada trabajador nuevo me toma mucho tiempo', s:'manual'}
+    ]},
+    {id:'legal', t:'Legal, impuestos y trámites', f:BIZ.concat(['crear']), p:[
+      {id:'g1', t:'No sé cómo formalizar mi negocio', s:'tramites', f:['crear','emp','serv']},
+      {id:'g2', t:'No sé qué impuestos o declaraciones me tocan', s:'tramites'},
+      {id:'g3', t:'No sé si debo dar boleta o factura', s:'tramites'},
+      {id:'g4', t:'Se me pasan fechas de patentes, permisos o declaraciones', s:'vencimientos', f:BIZ}
+    ]},
+    {id:'seg', t:'Seguros y documentos', f:BIZ.concat(['per']), p:[
+      {id:'s1', t:'No sé cuándo vencen mis seguros o documentos', s:'vencimientos'},
+      {id:'s2', t:'Mis documentos importantes están desordenados', s:'vencimientos'},
+      {id:'s3', t:'No sé qué seguros necesita mi negocio', s:'tramites', f:BIZ}
+    ]},
+    {id:'aten', t:'Atención al cliente', f:BIZ, p:[
+      {id:'a1', t:'Respondo las mismas preguntas todo el día', s:'ia'},
+      {id:'a2', t:'Contesto tarde y pierdo ventas', s:'ia'},
+      {id:'a3', t:'No tengo mensajes listos para responder rápido', s:'whatsapp'},
+      {id:'a4', t:'Los reclamos se me acumulan', s:'reclamos'}
+    ]},
+    {id:'ope', t:'Operación diaria', f:['pyme','rest','serv'], p:[
+      {id:'o1', t:'Las reservas y horas me llegan desordenadas', s:'reservas', f:['rest','serv']},
+      {id:'o2', t:'Los clientes faltan a sus horas', s:'reservas', f:['serv']},
+      {id:'o3', t:'Mi menú impreso es caro de cambiar', s:'menu', f:['rest']},
+      {id:'o4', t:'Los pedidos se confunden entre caja y cocina', s:'comandas', f:['rest']},
+      {id:'o5', t:'Hago todo a mano y no me alcanza el tiempo', s:'automatiza'}
+    ]},
+    {id:'crear', t:'Crear mi negocio', f:['crear','per'], p:[
+      {id:'c1', t:'Tengo una idea pero no sé por dónde empezar', s:'lanzamiento'},
+      {id:'c2', t:'No tengo nombre ni logo', s:'marca'},
+      {id:'c3', t:'No sé si mi idea se va a vender', s:'estudio'},
+      {id:'c4', t:'No sé cuánto cobrar', s:'costos'},
+      {id:'c5', t:'Quiero vender por internet desde el primer día', s:'catalogo', f:['crear']}
+    ]}
   ];
+  var PMAP = {}, AMAP = {};
+  AREAS.forEach(function(a){ AMAP[a.id]=a; a.p.forEach(function(p){ p.a=a.id; if(!p.f) p.f=a.f; PMAP[p.id]=p; }); });
+
+  /* Palabras clave del comentario libre → problema */
   var CLAVES = [
-    [/plata|gasto|gasté|dinero|banco|sueldo|deuda/i,'finanzas'],
-    [/pago|venc|cuenta|olvid/i,'pagos'],
-    [/vend|cliente|venta/i,'embudo'],
-    [/mensaje|pregunt|respond|whatsapp/i,'ia'],
-    [/redes|instagram|tiktok|facebook|publica/i,'redes'],
-    [/stock|inventario|bodega/i,'stock'],
-    [/reserva|hora|agenda|cita/i,'reservas'],
-    [/men[uú]|carta|plato/i,'menu'],
-    [/ganancia|cuánto gano|cuanto gano|caja|números|numeros/i,'panel'],
-    [/logo|marca|diseño|imagen/i,'canva'],
-    [/cat[aá]logo|producto|precio/i,'catalogo']
+    [/plata|gast[oé]|dinero|sueldo|deuda|ahorr/i,'f1'], [/vencimiento|venc[eí]|olvid.*pag|cuentas? (fija|por pagar)/i,'f2'],
+    [/gan[oa]n?cia|cu[aá]nto gano|margen|utilidad/i,'f3'], [/precio|cu[aá]nto cobr/i,'f4'], [/me deben|cobrar|moros|fiad/i,'f5'], [/caja/i,'f7'],
+    [/stock|inventario|bodega|mercader/i,'i1'], [/proveedor/i,'i5'],
+    [/despacho|env[ií]o|reparto|repartir|delivery|ruta|transport/i,'l1'],
+    [/turno|asistencia|atraso|falta|liquidaci|contrato/i,'h1'], [/contratar|postul|trabajador(es)? nuevo|personal nuevo/i,'h4'],
+    [/formaliz|inicio de actividades|\bsii\b|impuesto|\biva\b|declaraci/i,'g2'], [/boleta|factura/i,'g3'], [/patente|permiso|municipal/i,'g4'],
+    [/seguro|p[oó]liza/i,'s3'], [/documento/i,'s2'],
+    [/rese[ñn]a|estrella|calificaci|opini/i,'r1'], [/mapa|maps|ubicaci|encuentran|direcci/i,'u1'],
+    [/redes|instagram|tiktok|facebook|public/i,'m1'], [/anuncio|publicidad|ads/i,'m5'], [/logo|imagen|marca/i,'m3'],
+    [/vend|clientes nuevos|pocos clientes/i,'v1'], [/no vuelven|fideli|puntos/i,'v4'], [/p[aá]gina web|sitio web/i,'v5'],
+    [/pregunt|respond|mensajes|whatsapp/i,'a1'], [/reclamo|queja/i,'a4'],
+    [/reserva|cita|agenda|horas/i,'o1'], [/men[uú]|carta/i,'o3'], [/cocina|comanda/i,'o4'], [/a mano|tiempo|repetitiv|automatiz/i,'o5'],
+    [/idea|empezar|emprender|partir/i,'c1'], [/nombre/i,'c2']
   ];
   var URG = [
     {id:'sin', t:'Sin apuro', d:'Cuando se pueda'},
     {id:'mes', t:'Este mes', d:'En las próximas semanas'},
-    {id:'ya', t:'Lo antes posible', d:'Puedo usar entrega preferente'}
+    {id:'ya', t:'Lo antes posible', d:'Me interesa la entrega preferente'}
   ];
-  var st = {paso:0, perfil:null, probs:[], urg:null, com:'', nombre:''};
-  var body = document.getElementById('d-body');
-  var bNext = document.getElementById('d-next');
-  var bBack = document.getElementById('d-back');
-  var tag = document.getElementById('d-step');
-  var bar = document.getElementById('d-bar');
 
+  var st;
+  function reset(){ st = {paso:0, perfil:null, areas:[], probs:[], urg:null, com:'', nombre:''}; }
+  reset();
+
+  var ov = document.getElementById('cx-overlay'), body = document.getElementById('cx-body'), fab = document.getElementById('cx-fab'), pushed = false;
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function clp(n){return '$'+n.toLocaleString('es-CL');}
-  function opt(id, t, d, on){return '<button type="button" class="opt" data-id="'+id+'" aria-pressed="'+(on?'true':'false')+'"><b>'+esc(t)+'</b>'+(d?'<span>'+esc(d)+'</span>':'')+'</button>';}
+  function rango(p,m){return (p[0]===p[1]?clp(p[0]):clp(p[0])+' – '+clp(p[1]))+(m?' / mes':'');}
+  function opt(id,t,d,on){return '<button type="button" class="opt" data-id="'+id+'" aria-pressed="'+(on?'true':'false')+'"><b>'+esc(t)+'</b>'+(d?'<span>'+esc(d)+'</span>':'')+'</button>';}
+  function puede(p){return p.f.indexOf(st.perfil)>-1;}
+  function areasPerfil(){return AREAS.filter(function(a){return a.p.some(puede);});}
+
+  function abrir(){
+    ov.hidden = false; fab.hidden = true; document.body.style.overflow='hidden';
+    if(!pushed){ try{ history.pushState({consulta:1},''); pushed=true; }catch(e){} }
+    render(); setTimeout(function(){ var b=body.querySelector('button,textarea,input'); if(b) b.focus(); },30);
+  }
+  function cerrar(desdeAtras){
+    ov.hidden = true; fab.hidden = false; document.body.style.overflow='';
+    if(pushed && !desdeAtras){ pushed=false; try{ history.back(); }catch(e){} } else { pushed=false; }
+    fab.focus();
+  }
+  window.addEventListener('popstate', function(){ if(!ov.hidden) cerrar(true); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !ov.hidden) cerrar(false); });
+  document.getElementById('cx-close').addEventListener('click', function(){ cerrar(false); });
+  ov.addEventListener('click', function(e){ if(e.target===ov) cerrar(false); });
+  fab.addEventListener('click', abrir);
+  document.querySelectorAll('[data-open-consulta]').forEach(function(b){ b.addEventListener('click', abrir); });
 
   function resultado(){
-    var lista = [], vistos = {};
-    st.probs.forEach(function(pid){
-      var p = PROB.filter(function(x){return x.id===pid;})[0];
-      if(p && !vistos[p.s]){vistos[p.s]=1; lista.push({s:p.s, why:p.t});}
-    });
-    CLAVES.forEach(function(k){
-      if(k[0].test(st.com) && !vistos[k[1]]){vistos[k[1]]=1; lista.push({s:k[1], why:'Lo que me contaste'});}
-    });
-    if(vistos.asesor && !vistos.catalogo){lista.push({s:'catalogo', why:'Necesario para el asesor'}); vistos.catalogo=1;}
-    return lista;
+    var orden = [], grupos = {};
+    function add(pid, why){
+      var p = PMAP[pid]; if(!p) return;
+      if(!grupos[p.s]){ grupos[p.s] = {s:p.s, probs:[]}; orden.push(p.s); }
+      var txt = why || p.t;
+      if(grupos[p.s].probs.indexOf(txt)<0) grupos[p.s].probs.push(txt);
+    }
+    st.probs.forEach(function(pid){ add(pid); });
+    CLAVES.forEach(function(k){ if(k[0].test(st.com)){ var p=PMAP[k[1]]; if(st.probs.indexOf(k[1])<0) add(k[1], p.t+' (lo que me contaste)'); } });
+    if(grupos.asesor && !grupos.catalogo){ grupos.catalogo={s:'catalogo', probs:['Necesario para el asesor guiado']}; orden.push('catalogo'); }
+    return orden.map(function(s){return grupos[s];});
+  }
+
+  function nav(back, nextTxt, nextOff){
+    return '<div class="cx-nav">'+(back?'<button type="button" class="btn btn-ghost" data-act="back">Atrás</button>':'<span></span>')+
+      '<button type="button" class="btn btn-primary" data-act="next"'+(nextOff?' disabled':'')+'>'+nextTxt+'</button></div>';
+  }
+  function cabecera(n){
+    return '<div class="cx-top"><h2 id="cx-title" style="font-size:20px">Consulta gratis</h2><span class="cx-tag">Paso '+n+' de 4</span></div>'+
+      '<div class="bar" aria-hidden="true"><i style="width:'+(n*25)+'%"></i></div>';
   }
 
   function render(){
-    tag.textContent = st.paso<3 ? 'Paso '+(st.paso+1)+' de 4' : 'Tu diagnóstico';
-    bar.style.width = ((st.paso+1)*25)+'%';
-    bBack.hidden = st.paso===0;
-    bNext.hidden = st.paso===3;
     var h = '';
     if(st.paso===0){
-      h = '<p class="q">¿Quién eres?</p><p class="qhint">Elige la opción que más se parece a ti.</p><div class="opts" data-tipo="perfil">'+
-        PERFILES.map(function(p){return opt(p.id,p.t,p.d,st.perfil===p.id);}).join('')+'</div>';
-      bNext.disabled = !st.perfil;
+      h = '<div class="cx-hello"><div class="logo" aria-hidden="true"><span>mc</span><i></i></div>'+
+        '<h2 id="cx-title">Haz una consulta gratis y descubre qué necesitas</h2>'+
+        '<p class="sub">Responde unas preguntas rápidas sobre tu negocio, tu idea o tus finanzas. Al final te digo qué problemas tienes, cómo resolverlos y cuánto costaría.</p>'+
+        '<ul class="cx-list"><li>Ventas, redes, reseñas y clientes</li><li>Finanzas, stock, despachos y personal</li><li>Trámites, impuestos, seguros y documentos</li></ul>'+
+        '<div class="actions"><button type="button" class="btn btn-primary" data-act="next">Comenzar consulta</button><button type="button" class="btn btn-ghost" data-act="skip">Omitir</button></div>'+
+        '<p class="note" style="margin:0">Toma 1 minuto. Puedes volver cuando quieras con el botón flotante.</p></div>';
     } else if(st.paso===1){
-      var ps = PROB.filter(function(p){return p.f.indexOf(st.perfil)>-1;});
-      h = '<p class="q">¿Qué te está pasando?</p><p class="qhint">Marca todo lo que aplique. Si no está aquí, sigue y me lo cuentas con tus palabras.</p><div class="opts" data-tipo="probs">'+
-        ps.map(function(p){return opt(p.id,p.t,'',st.probs.indexOf(p.id)>-1);}).join('')+'</div>';
-      bNext.disabled = false;
-      bNext.textContent = st.probs.length ? 'Siguiente' : 'Omitir';
+      h = cabecera(1)+'<p class="q">¿Quién eres?</p><p class="qhint">Elige la opción que más se parece a ti.</p><div class="opts" data-tipo="perfil">'+
+        PERFILES.map(function(p){return opt(p.id,p.t,p.d,st.perfil===p.id);}).join('')+'</div>'+nav(false,'Siguiente',!st.perfil);
     } else if(st.paso===2){
-      h = '<p class="q">¿Para cuándo lo necesitas?</p><div class="opts" data-tipo="urg">'+
+      h = cabecera(2)+'<p class="q">¿En qué áreas tienes problemas?</p><p class="qhint">Marca todas las que quieras. Si no sabes, sigue y te muestro todo.</p><div class="opts" data-tipo="areas">'+
+        areasPerfil().map(function(a){return opt(a.id,a.t,'',st.areas.indexOf(a.id)>-1);}).join('')+'</div>'+nav(true, st.areas.length?'Siguiente':'Ver todo');
+    } else if(st.paso===3){
+      var as = areasPerfil().filter(function(a){return !st.areas.length || st.areas.indexOf(a.id)>-1;});
+      h = cabecera(3)+'<p class="q">¿Qué te está pasando?</p><p class="qhint">Marca todo lo que aplique. Si no está, en el siguiente paso me lo cuentas con tus palabras.</p>';
+      as.forEach(function(a){
+        h += '<p class="grp">'+esc(a.t)+'</p><div class="opts" data-tipo="probs">'+a.p.filter(puede).map(function(p){return opt(p.id,p.t,'',st.probs.indexOf(p.id)>-1);}).join('')+'</div>';
+      });
+      h += nav(true, st.probs.length?'Siguiente':'Omitir');
+    } else if(st.paso===4){
+      h = cabecera(4)+'<p class="q">¿Para cuándo lo necesitas?</p><div class="opts" data-tipo="urg">'+
         URG.map(function(u){return opt(u.id,u.t,u.d,st.urg===u.id);}).join('')+'</div>'+
-        '<label for="d-com">Cuéntame tu problema con tus palabras (opcional)</label>'+
-        '<textarea id="d-com" placeholder="Ej.: a fin de mes no sé en qué se me fue el sueldo">'+esc(st.com)+'</textarea>'+
-        '<label for="d-nom">Tu nombre (opcional)</label><input type="text" id="d-nom" value="'+esc(st.nombre)+'" autocomplete="given-name">';
-      bNext.disabled = false;
-      bNext.textContent = 'Ver mi diagnóstico';
+        '<label for="cx-com">Cuéntame tu problema con tus palabras (opcional)</label>'+
+        '<textarea id="cx-com" placeholder="Ej.: a fin de mes no sé en qué se me fue la plata y los clientes me preguntan todo por WhatsApp">'+esc(st.com)+'</textarea>'+
+        '<label for="cx-nom">Tu nombre (opcional)</label><input type="text" id="cx-nom" value="'+esc(st.nombre)+'" autocomplete="given-name">'+
+        nav(true,'Ver mi diagnóstico');
     } else {
-      var lista = resultado(), min=0, max=0, mes=null, cot=0;
-      if(!lista.length){
-        h = '<p class="q">Necesito saber un poco más</p><p class="qhint">No alcancé a detectar un problema concreto. Escríbeme y lo vemos juntos en 5 minutos.</p>';
-      } else {
-        h = '<p class="q">'+(st.nombre?esc(st.nombre)+', esto':'Esto')+' es lo que te recomiendo</p>';
-        lista.forEach(function(it){
-          var s = SOL[it.s], precio;
-          if(s.p){ precio = (s.p[0]===s.p[1]?clp(s.p[0]):clp(s.p[0])+' – '+clp(s.p[1]))+(s.m?' / mes':'');
-            if(s.m){mes=s.p;} else {min+=s.p[0]; max+=s.p[1];} }
-          else { precio='A cotizar'; cot++; }
-          h += '<div class="sol"><span class="why">'+esc(it.why)+'</span><h3>'+esc(s.t)+'</h3><p>'+esc(s.c)+'</p>'+
-            '<div class="meta">'+precio+(s.x?'<small>'+esc(s.x)+'</small>':'')+'<small>Plazo: '+esc(s.pz)+'</small></div></div>';
-        });
-        if(min){ h += '<div class="total"><span>Inversión estimada</span><strong>'+clp(min)+' – '+clp(max)+'</strong></div>'; }
-        var notas = [];
-        if(mes) notas.push('Más '+clp(mes[0])+' – '+clp(mes[1])+' al mes por redes sociales.');
-        if(cot) notas.push((cot>1?'Las soluciones a medida se cotizan':'La solución a medida se cotiza')+' según tu caso.');
-        if(st.urg==='ya') notas.push('Con entrega preferente (+30%, mínimo $20.000) tu trabajo pasa primero en la fila.');
-        notas.push('Valores brutos. Te confirmo el precio exacto por WhatsApp.');
-        h += '<p class="note">'+notas.join(' ')+'</p>';
-      }
-      var perfil = (PERFILES.filter(function(p){return p.id===st.perfil;})[0]||{}).t||'';
-      var msg = 'Hola Matías'+(st.nombre?', soy '+st.nombre:'')+'. Hice el diagnóstico en tu sitio.\n'+
-        'Perfil: '+perfil+'\n'+
-        (st.probs.length?'Problemas: '+st.probs.map(function(id){return PROB.filter(function(p){return p.id===id;})[0].t;}).join('; ')+'\n':'')+
-        (st.com?'En mis palabras: '+st.com+'\n':'')+
-        (lista.length?'Soluciones sugeridas: '+lista.map(function(i){return SOL[i.s].t;}).join(', ')+'\n':'')+
-        (st.urg?'Plazo: '+URG.filter(function(u){return u.id===st.urg;})[0].t:'');
-      h += '<div class="actions" style="margin-top:20px"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent(msg)+'">Enviar mi diagnóstico por WhatsApp</a>'+
-        '<button type="button" class="btn btn-ghost" id="d-reset">Empezar de nuevo</button></div>';
+      h = informe();
     }
     body.innerHTML = h;
   }
 
+  function informe(){
+    var lista = resultado(), min=0, max=0, mes=[0,0], ia=false, n=0;
+    var nombre = st.nombre ? esc(st.nombre)+', ' : '';
+    if(!lista.length){
+      return '<h2 id="cx-title">Necesito saber un poco más</h2><p class="sub" style="margin-top:10px">No alcancé a detectar un problema concreto. Escríbeme y lo vemos juntos en 5 minutos.</p>'+
+        '<div class="actions" style="margin-top:20px"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Matías, hice la consulta en tu sitio y quiero conversar sobre mi negocio.')+'">Hablar con un asesor</a>'+
+        '<button type="button" class="btn btn-ghost" data-act="reset">Empezar de nuevo</button></div>';
+    }
+    lista.forEach(function(g){ n+=g.probs.length; });
+    var areasDet = {};
+    st.probs.forEach(function(pid){ areasDet[AMAP[PMAP[pid].a].t]=1; });
+    var h = '<h2 id="cx-title">'+nombre+'detecté '+n+' problema'+(n>1?'s':'')+' y te puedo ayudar con '+lista.length+' solucion'+(lista.length>1?'es':'')+'</h2>'+
+      '<div class="res-sum">'+Object.keys(areasDet).map(function(a){return '<span class="chip">'+esc(a)+'</span>';}).join('')+'</div>';
+    lista.forEach(function(g){
+      var s = SOL[g.s];
+      if(s.m){ mes[0]+=s.p[0]; mes[1]+=s.p[1]; } else { min+=s.p[0]; max+=s.p[1]; }
+      if(g.s==='ia') ia=true;
+      h += '<div class="sol"><h3>'+esc(s.t)+'</h3>'+
+        '<p class="fix">Resuelve: <b>'+g.probs.map(esc).join(' · ')+'</b></p>'+
+        '<p>'+esc(s.h)+'</p><p class="ok">Así: '+esc(s.r)+'</p>'+
+        '<div class="meta">'+rango(s.p,s.m)+(s.x?'<small>'+esc(s.x)+'</small>':'')+'<small>Plazo: '+esc(s.pz)+'</small></div></div>';
+    });
+    if(max){ h += '<div class="total"><span>Cotización estimada</span><strong>'+clp(min)+' – '+clp(max)+'</strong></div>'; }
+    var notas = [];
+    if(mes[1]) notas.push('Más '+rango(mes,true)+' por el servicio mensual.');
+    if(ia) notas.push('El asistente con IA tiene además un costo de uso mensual.');
+    if(st.urg==='ya') notas.push('Con entrega preferente (+30%, mínimo $20.000) tu trabajo pasa primero.');
+    notas.push('Valores brutos. Si contratas varias soluciones, se arma un paquete con mejor precio.');
+    h += '<p class="note">'+notas.join(' ')+'</p>'+
+      '<p class="sub" style="margin-top:16px;font-size:16px">Esto es una estimación automática. Para una evaluación exacta, presiona <b>Cotizar con asesor</b> y me llega todo tu diagnóstico por WhatsApp.</p>';
+
+    var perfil = (PERFILES.filter(function(p){return p.id===st.perfil;})[0]||{}).t||'';
+    var L = ['Hola Matías'+(st.nombre?', soy '+st.nombre:'')+'. Hice la consulta gratis en tu sitio.', 'Perfil: '+perfil, '', 'PROBLEMAS Y SOLUCIONES PROPUESTAS:'];
+    lista.forEach(function(g,i){
+      var s=SOL[g.s];
+      L.push((i+1)+'. '+s.t+' — '+rango(s.p,s.m)+(s.x?' '+s.x:'')+' (plazo '+s.pz+')');
+      L.push('   Resuelve: '+g.probs.join('; '));
+    });
+    L.push('');
+    if(max) L.push('Cotización estimada: '+clp(min)+' – '+clp(max)+(mes[1]?' + '+rango(mes,true):''));
+    if(st.urg) L.push('Plazo: '+URG.filter(function(u){return u.id===st.urg;})[0].t);
+    if(st.com) L.push('En mis palabras: '+st.com);
+    L.push('', 'Quiero una evaluación más exacta.');
+    h += '<div class="actions" style="margin-top:18px"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'))+'">Cotizar con asesor</a>'+
+      '<button type="button" class="btn btn-ghost" data-act="reset">Empezar de nuevo</button></div>';
+    return h;
+  }
+
+  function guardar(){
+    var c=document.getElementById('cx-com'), n=document.getElementById('cx-nom');
+    if(c) st.com=c.value.trim();
+    if(n) st.nombre=n.value.trim();
+  }
   body.addEventListener('click', function(e){
-    var b = e.target.closest('.opt');
-    if(b){
-      var tipo = b.parentNode.getAttribute('data-tipo'), id = b.getAttribute('data-id');
-      if(tipo==='perfil'){ if(st.perfil!==id){st.probs=[];} st.perfil=id; }
-      else if(tipo==='urg'){ st.urg=id; }
-      else { var i=st.probs.indexOf(id); if(i>-1){st.probs.splice(i,1);} else {st.probs.push(id);} }
-      guardar(); render(); var nb = body.querySelector('[data-id="'+id+'"]'); if(nb) nb.focus();
+    var b = e.target.closest('button'); if(!b) return;
+    var act = b.getAttribute('data-act');
+    if(b.classList.contains('opt')){
+      var tipo = b.parentNode.getAttribute('data-tipo'), id = b.getAttribute('data-id'), arr;
+      if(tipo==='perfil'){ if(st.perfil!==id){ st.areas=[]; st.probs=[]; } st.perfil=id; }
+      else if(tipo==='urg'){ guardar(); st.urg=id; }
+      else { arr = tipo==='areas'?st.areas:st.probs; var i=arr.indexOf(id); if(i>-1) arr.splice(i,1); else arr.push(id); }
+      render(); var nb=body.querySelector('.opt[data-id="'+id+'"]'); if(nb) nb.focus();
       return;
     }
-    if(e.target.id==='d-reset'){ st={paso:0,perfil:null,probs:[],urg:null,com:'',nombre:''}; render(); }
+    if(act==='skip'){ cerrar(false); return; }
+    if(act==='reset'){ reset(); st.paso=1; render(); return; }
+    if(act==='next'){ guardar(); st.paso++; render(); document.getElementById('cx').scrollTop=0; var f=body.querySelector('.opt,button'); if(f) f.focus(); return; }
+    if(act==='back'){ guardar(); st.paso--; render(); document.getElementById('cx').scrollTop=0; }
   });
-  function guardar(){
-    var c=document.getElementById('d-com'), n=document.getElementById('d-nom');
-    if(c) st.com=c.value.trim(); if(n) st.nombre=n.value.trim();
+
+  /* Soluciones a medida en la lista de precios */
+  var cont = document.getElementById('medida');
+  if(cont){
+    var base = {embudo:1,catalogo:1,landing:1,asesor:1,redes:1,canva:1,anuncios:1,ia:1,menu:1};
+    cont.innerHTML = Object.keys(SOL).filter(function(k){return !base[k];}).map(function(k){var s=SOL[k];
+      return '<div class="row custom-row"><div class="info"><div class="name">'+esc(s.t)+'</div><div class="desc">'+esc(s.h)+'</div></div><div class="time">'+esc(s.pz)+'</div><div class="price">'+rango(s.p,s.m)+'</div></div>';}).join('');
   }
-  bNext.addEventListener('click', function(){ guardar(); if(st.paso<3){st.paso++; bNext.textContent='Siguiente'; render(); document.getElementById('diagnostico').scrollIntoView({block:'start'});} });
-  bBack.addEventListener('click', function(){ guardar(); if(st.paso>0){st.paso--; bNext.textContent='Siguiente'; render();} });
-  render();
+
+  abrir();
 })();
 </script>
 </body>
