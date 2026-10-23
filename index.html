@@ -77,6 +77,44 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .contact dd{margin:0;font-weight:500;user-select:all}
 .foot{color:var(--muted);font-size:13px;padding-bottom:32px}
 
+/* Diagnóstico */
+.diag{margin-block:40px 8px;background:var(--navy-2);border:1px solid var(--line);border-radius:20px;padding:28px}
+.diag-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline}
+.diag-head h2{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.diag-head p{color:var(--muted);margin:6px 0 0;max-width:56ch}
+.step-tag{font-family:var(--mono);font-size:13px;color:var(--sky);white-space:nowrap}
+.bar{height:4px;background:var(--line);border-radius:4px;margin:18px 0 22px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sky);width:25%;transition:width .25s}
+.q{font-size:20px;font-weight:700;margin:0 0 6px}
+.qhint{color:var(--muted);font-size:15px;margin:0 0 16px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.opt{font:inherit;text-align:left;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;min-height:48px;display:flex;flex-direction:column;gap:2px}
+.opt:hover{border-color:var(--sky)}
+.opt[aria-pressed="true"]{border-color:var(--sky);background:rgba(56,189,248,.12)}
+.opt b{font-weight:700}
+.opt span{color:var(--muted);font-size:14px}
+.diag textarea,.diag input[type=text]{width:100%;font:inherit;color:var(--fg);background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.diag textarea{min-height:110px;resize:vertical}
+.diag label{display:block;font-weight:700;margin:18px 0 8px}
+.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:22px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+button.btn{font:inherit;font-weight:700;border:0;cursor:pointer}
+button.btn-ghost{background:transparent;border:1px solid var(--line)}
+.sol{border-top:1px solid var(--line);padding-block:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px}
+.sol .why{font-family:var(--mono);font-size:13px;color:var(--sky)}
+.sol h3{font-size:19px;font-weight:800;grid-column:1}
+.sol p{margin:0;color:var(--muted);grid-column:1}
+.sol .meta{grid-column:2;grid-row:1/span 3;text-align:right;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sol .meta small{display:block;color:var(--muted)}
+.total{margin-top:8px;padding:18px;border-radius:14px;background:var(--navy);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline}
+.total strong{font-family:var(--mono);font-size:22px}
+.note{color:var(--muted);font-size:14px;margin:12px 0 0}
+@media (max-width:720px){
+  .diag{padding:20px}
+  .sol{grid-template-columns:1fr}
+  .sol .meta{grid-column:1;grid-row:auto;text-align:left}
+}
+
 @media (max-width:720px){
   .hero{grid-template-columns:1fr;padding-block:36px}
   .logo{width:88px;height:88px}.logo span{font-size:40px}.logo i{width:22px;height:22px}
@@ -102,10 +140,26 @@ h1,h2,h3{text-wrap:balance;margin:0}
       <p class="lead">Páginas web, catálogos con pedido por WhatsApp, menús con QR, apps y diseños para redes. Hecho por Matías Condori para negocios que quieren vender más.</p>
       <div class="actions">
         <a class="btn btn-primary" href="https://wa.me/56974629597?text=Hola%20Mat%C3%ADas%2C%20quiero%20cotizar%20un%20trabajo" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
-        <a class="btn btn-ghost" href="#servicios">Ver precios</a>
+        <a class="btn btn-ghost" href="#diagnostico">Diagnóstico gratis</a>
       </div>
     </div>
   </header>
+
+  <section class="diag" id="diagnostico" aria-labelledby="t-diag">
+    <div class="diag-head">
+      <div>
+        <h2 id="t-diag">Diagnóstico gratis</h2>
+        <p>Cuéntame qué te pasa y te digo qué solución te sirve, cuánto cuesta y cuánto demora. Toma 1 minuto.</p>
+      </div>
+      <span class="step-tag" id="d-step">Paso 1 de 4</span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="d-bar"></i></div>
+    <div id="d-body" aria-live="polite"></div>
+    <div class="nav">
+      <button type="button" class="btn btn-ghost" id="d-back">Atrás</button>
+      <button type="button" class="btn btn-primary" id="d-next">Siguiente</button>
+    </div>
+  </section>
 
   <section id="servicios" aria-labelledby="t-serv">
     <div class="intro">
@@ -184,5 +238,169 @@ h1,h2,h3{text-wrap:balance;margin:0}
   </footer>
   <p class="foot">Valores en pesos chilenos, actualizados a octubre de 2026.</p>
 </div>
+<script>
+(function(){
+  var WA = '56974629597';
+  var PERFILES = [
+    {id:'persona', t:'Persona natural', d:'Quiero ordenar mis finanzas o mi día a día'},
+    {id:'emprende', t:'Emprendimiento que recién parte', d:'Vendo por redes o desde la casa'},
+    {id:'negocio', t:'Negocio o tienda', d:'Tengo local, productos o stock'},
+    {id:'comida', t:'Restaurante o comida', d:'Local, delivery o venta de comida'},
+    {id:'servicios', t:'Servicios', d:'Peluquería, taller, consulta, clases, oficios'}
+  ];
+  var SOL = {
+    finanzas:{t:'Control de gastos automático', c:'Conecto los correos de aviso de tu banco a una planilla que ordena cada compra, transferencia e ingreso por categoría. Cada semana recibes un reporte que te dice cuánto gastaste, en qué y qué día.', p:null, pz:'7–10 días'},
+    pagos:{t:'Recordatorio de pagos', c:'Una app en tu celular con tus cuentas fijas y fechas de vencimiento que te avisa antes de cada pago.', p:null, pz:'3–5 días'},
+    panel:{t:'Panel de ventas automático', c:'Tus ventas quedan en una planilla y un panel te muestra cuánto vendes por día, por producto y por mes, y cuánto te queda.', p:null, pz:'5–7 días'},
+    stock:{t:'Control de stock', c:'Cada venta descuenta del stock y te avisa cuando un producto se está acabando.', p:null, pz:'7–10 días'},
+    reservas:{t:'Agenda de reservas', c:'Una página con tus horarios libres: el cliente elige su hora y la reserva te llega ordenada por WhatsApp.', p:null, pz:'5–7 días'},
+    catalogo:{t:'Catálogo con pedido por WhatsApp', c:'Tus productos con foto y precio, carrito, y el pedido te llega completo por WhatsApp. Cambias precios desde una planilla.', p:[90000,120000], pz:'7–10 días'},
+    landing:{t:'Landing page', c:'Una página que presenta lo que haces y lleva a la gente a escribirte por WhatsApp.', p:[80000,120000], pz:'3–5 días'},
+    menu:{t:'Menú digital con QR', c:'Tu carta en el celular del cliente con un QR en la mesa. Cambias precios sin reimprimir.', p:[60000,120000], pz:'3–5 días'},
+    ia:{t:'Asistente con IA', c:'Responde las preguntas frecuentes de tus clientes a cualquier hora y les recomienda qué comprar.', p:[100000,150000], pz:'10–15 días', x:'+ uso mensual'},
+    asesor:{t:'Asesor guiado', c:'Unas preguntas simples que recomiendan el producto ideal a cada cliente dentro de tu catálogo.', p:[40000,60000], pz:'+2–5 días', x:'sobre el catálogo'},
+    embudo:{t:'Embudo de venta + anuncios', c:'Te armo el camino completo: anuncio, página y mensaje de cierre, con los textos listos para publicar.', p:[80000,120000], pz:'5–7 días'},
+    redes:{t:'Redes sociales mensual', c:'Me encargo de 8 publicaciones e historias al mes con un calendario que apruebas tú.', p:[100000,120000], pz:'mensual', m:true},
+    canva:{t:'Pack de plantillas Canva', c:'8 diseños con tu marca que puedes editar tú mismo para publicar con buena imagen.', p:[40000,60000], pz:'3–5 días'}
+  };
+  var PROB = [
+    {id:'plata', t:'No sé dónde se me va la plata', s:'finanzas', f:['persona','emprende']},
+    {id:'olvido', t:'Se me olvidan pagos y vencimientos', s:'pagos', f:['persona','emprende']},
+    {id:'extra', t:'Quiero vender algo o tener ingresos extra', s:'landing', f:['persona']},
+    {id:'mostrar', t:'Quiero mostrar mi trabajo de forma profesional', s:'landing', f:['persona','servicios']},
+    {id:'pocos', t:'Vendo poco o llegan pocos clientes nuevos', s:'embudo', f:['emprende','negocio','comida','servicios']},
+    {id:'precios', t:'Mis clientes no conocen mis productos ni precios', s:'catalogo', f:['emprende','negocio','comida']},
+    {id:'pedidos', t:'Los pedidos por WhatsApp se me desordenan', s:'catalogo', f:['emprende','negocio','comida']},
+    {id:'preguntas', t:'Respondo las mismas preguntas todo el día', s:'ia', f:['emprende','negocio','comida','servicios']},
+    {id:'elegir', t:'Mis clientes no saben qué producto elegir', s:'asesor', f:['emprende','negocio']},
+    {id:'tiempo', t:'No tengo tiempo para las redes sociales', s:'redes', f:['emprende','negocio','comida','servicios']},
+    {id:'imagen', t:'Mi marca se ve poco profesional', s:'canva', f:['emprende','negocio','comida','servicios']},
+    {id:'cuanto', t:'No sé cuánto vendo ni cuánto gano', s:'panel', f:['emprende','negocio','comida','servicios']},
+    {id:'stock', t:'Se me descuadra el stock', s:'stock', f:['emprende','negocio']},
+    {id:'horas', t:'Las reservas y horas me llegan desordenadas', s:'reservas', f:['servicios','comida']},
+    {id:'carta', t:'Mi menú impreso es caro de cambiar', s:'menu', f:['comida']}
+  ];
+  var CLAVES = [
+    [/plata|gasto|gasté|dinero|banco|sueldo|deuda/i,'finanzas'],
+    [/pago|venc|cuenta|olvid/i,'pagos'],
+    [/vend|cliente|venta/i,'embudo'],
+    [/mensaje|pregunt|respond|whatsapp/i,'ia'],
+    [/redes|instagram|tiktok|facebook|publica/i,'redes'],
+    [/stock|inventario|bodega/i,'stock'],
+    [/reserva|hora|agenda|cita/i,'reservas'],
+    [/men[uú]|carta|plato/i,'menu'],
+    [/ganancia|cuánto gano|cuanto gano|caja|números|numeros/i,'panel'],
+    [/logo|marca|diseño|imagen/i,'canva'],
+    [/cat[aá]logo|producto|precio/i,'catalogo']
+  ];
+  var URG = [
+    {id:'sin', t:'Sin apuro', d:'Cuando se pueda'},
+    {id:'mes', t:'Este mes', d:'En las próximas semanas'},
+    {id:'ya', t:'Lo antes posible', d:'Puedo usar entrega preferente'}
+  ];
+  var st = {paso:0, perfil:null, probs:[], urg:null, com:'', nombre:''};
+  var body = document.getElementById('d-body');
+  var bNext = document.getElementById('d-next');
+  var bBack = document.getElementById('d-back');
+  var tag = document.getElementById('d-step');
+  var bar = document.getElementById('d-bar');
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function clp(n){return '$'+n.toLocaleString('es-CL');}
+  function opt(id, t, d, on){return '<button type="button" class="opt" data-id="'+id+'" aria-pressed="'+(on?'true':'false')+'"><b>'+esc(t)+'</b>'+(d?'<span>'+esc(d)+'</span>':'')+'</button>';}
+
+  function resultado(){
+    var lista = [], vistos = {};
+    st.probs.forEach(function(pid){
+      var p = PROB.filter(function(x){return x.id===pid;})[0];
+      if(p && !vistos[p.s]){vistos[p.s]=1; lista.push({s:p.s, why:p.t});}
+    });
+    CLAVES.forEach(function(k){
+      if(k[0].test(st.com) && !vistos[k[1]]){vistos[k[1]]=1; lista.push({s:k[1], why:'Lo que me contaste'});}
+    });
+    if(vistos.asesor && !vistos.catalogo){lista.push({s:'catalogo', why:'Necesario para el asesor'}); vistos.catalogo=1;}
+    return lista;
+  }
+
+  function render(){
+    tag.textContent = st.paso<3 ? 'Paso '+(st.paso+1)+' de 4' : 'Tu diagnóstico';
+    bar.style.width = ((st.paso+1)*25)+'%';
+    bBack.hidden = st.paso===0;
+    bNext.hidden = st.paso===3;
+    var h = '';
+    if(st.paso===0){
+      h = '<p class="q">¿Quién eres?</p><p class="qhint">Elige la opción que más se parece a ti.</p><div class="opts" data-tipo="perfil">'+
+        PERFILES.map(function(p){return opt(p.id,p.t,p.d,st.perfil===p.id);}).join('')+'</div>';
+      bNext.disabled = !st.perfil;
+    } else if(st.paso===1){
+      var ps = PROB.filter(function(p){return p.f.indexOf(st.perfil)>-1;});
+      h = '<p class="q">¿Qué te está pasando?</p><p class="qhint">Marca todo lo que aplique. Si no está aquí, sigue y me lo cuentas con tus palabras.</p><div class="opts" data-tipo="probs">'+
+        ps.map(function(p){return opt(p.id,p.t,'',st.probs.indexOf(p.id)>-1);}).join('')+'</div>';
+      bNext.disabled = false;
+      bNext.textContent = st.probs.length ? 'Siguiente' : 'Omitir';
+    } else if(st.paso===2){
+      h = '<p class="q">¿Para cuándo lo necesitas?</p><div class="opts" data-tipo="urg">'+
+        URG.map(function(u){return opt(u.id,u.t,u.d,st.urg===u.id);}).join('')+'</div>'+
+        '<label for="d-com">Cuéntame tu problema con tus palabras (opcional)</label>'+
+        '<textarea id="d-com" placeholder="Ej.: a fin de mes no sé en qué se me fue el sueldo">'+esc(st.com)+'</textarea>'+
+        '<label for="d-nom">Tu nombre (opcional)</label><input type="text" id="d-nom" value="'+esc(st.nombre)+'" autocomplete="given-name">';
+      bNext.disabled = false;
+      bNext.textContent = 'Ver mi diagnóstico';
+    } else {
+      var lista = resultado(), min=0, max=0, mes=null, cot=0;
+      if(!lista.length){
+        h = '<p class="q">Necesito saber un poco más</p><p class="qhint">No alcancé a detectar un problema concreto. Escríbeme y lo vemos juntos en 5 minutos.</p>';
+      } else {
+        h = '<p class="q">'+(st.nombre?esc(st.nombre)+', esto':'Esto')+' es lo que te recomiendo</p>';
+        lista.forEach(function(it){
+          var s = SOL[it.s], precio;
+          if(s.p){ precio = (s.p[0]===s.p[1]?clp(s.p[0]):clp(s.p[0])+' – '+clp(s.p[1]))+(s.m?' / mes':'');
+            if(s.m){mes=s.p;} else {min+=s.p[0]; max+=s.p[1];} }
+          else { precio='A cotizar'; cot++; }
+          h += '<div class="sol"><span class="why">'+esc(it.why)+'</span><h3>'+esc(s.t)+'</h3><p>'+esc(s.c)+'</p>'+
+            '<div class="meta">'+precio+(s.x?'<small>'+esc(s.x)+'</small>':'')+'<small>Plazo: '+esc(s.pz)+'</small></div></div>';
+        });
+        if(min){ h += '<div class="total"><span>Inversión estimada</span><strong>'+clp(min)+' – '+clp(max)+'</strong></div>'; }
+        var notas = [];
+        if(mes) notas.push('Más '+clp(mes[0])+' – '+clp(mes[1])+' al mes por redes sociales.');
+        if(cot) notas.push((cot>1?'Las soluciones a medida se cotizan':'La solución a medida se cotiza')+' según tu caso.');
+        if(st.urg==='ya') notas.push('Con entrega preferente (+30%, mínimo $20.000) tu trabajo pasa primero en la fila.');
+        notas.push('Valores brutos. Te confirmo el precio exacto por WhatsApp.');
+        h += '<p class="note">'+notas.join(' ')+'</p>';
+      }
+      var perfil = (PERFILES.filter(function(p){return p.id===st.perfil;})[0]||{}).t||'';
+      var msg = 'Hola Matías'+(st.nombre?', soy '+st.nombre:'')+'. Hice el diagnóstico en tu sitio.\n'+
+        'Perfil: '+perfil+'\n'+
+        (st.probs.length?'Problemas: '+st.probs.map(function(id){return PROB.filter(function(p){return p.id===id;})[0].t;}).join('; ')+'\n':'')+
+        (st.com?'En mis palabras: '+st.com+'\n':'')+
+        (lista.length?'Soluciones sugeridas: '+lista.map(function(i){return SOL[i.s].t;}).join(', ')+'\n':'')+
+        (st.urg?'Plazo: '+URG.filter(function(u){return u.id===st.urg;})[0].t:'');
+      h += '<div class="actions" style="margin-top:20px"><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent(msg)+'">Enviar mi diagnóstico por WhatsApp</a>'+
+        '<button type="button" class="btn btn-ghost" id="d-reset">Empezar de nuevo</button></div>';
+    }
+    body.innerHTML = h;
+  }
+
+  body.addEventListener('click', function(e){
+    var b = e.target.closest('.opt');
+    if(b){
+      var tipo = b.parentNode.getAttribute('data-tipo'), id = b.getAttribute('data-id');
+      if(tipo==='perfil'){ if(st.perfil!==id){st.probs=[];} st.perfil=id; }
+      else if(tipo==='urg'){ st.urg=id; }
+      else { var i=st.probs.indexOf(id); if(i>-1){st.probs.splice(i,1);} else {st.probs.push(id);} }
+      guardar(); render(); var nb = body.querySelector('[data-id="'+id+'"]'); if(nb) nb.focus();
+      return;
+    }
+    if(e.target.id==='d-reset'){ st={paso:0,perfil:null,probs:[],urg:null,com:'',nombre:''}; render(); }
+  });
+  function guardar(){
+    var c=document.getElementById('d-com'), n=document.getElementById('d-nom');
+    if(c) st.com=c.value.trim(); if(n) st.nombre=n.value.trim();
+  }
+  bNext.addEventListener('click', function(){ guardar(); if(st.paso<3){st.paso++; bNext.textContent='Siguiente'; render(); document.getElementById('diagnostico').scrollIntoView({block:'start'});} });
+  bBack.addEventListener('click', function(){ guardar(); if(st.paso>0){st.paso--; bNext.textContent='Siguiente'; render();} });
+  render();
+})();
+</script>
 </body>
 </html>
