@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Páginas web, catálogos con pedido por WhatsApp, menús QR, apps y diseño para redes en Iquique.">
+<title>MC Diseño &amp; Marketing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: marca a la izquierda en el hero; abajo, una lista de precios tipo carta (servicio · plazo · precio) por categoría */
+:root{
+  --navy:#0F172A; --navy-2:#16213A; --line:#283553;
+  --sky:#38BDF8; --sky-ink:#0B2540;
+  --fg:#F8FAFC; --muted:#A9B6CA;
+  --display:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--navy);color:var(--fg);font-family:var(--display);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--sky)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:8px}
+h1,h2,h3{text-wrap:balance;margin:0}
+
+/* Hero */
+.hero{padding-block:56px 48px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;border-bottom:1px solid var(--line)}
+.logo{width:120px;height:120px;border-radius:50%;background:var(--sky);display:grid;place-items:center;position:relative}
+.logo span{font-weight:800;font-size:54px;letter-spacing:-.04em;color:var(--navy);line-height:1}
+.logo i{position:absolute;right:4px;bottom:9px;width:28px;height:28px;border-radius:50%;background:var(--fg);border:4px solid var(--navy)}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-size:clamp(36px,6vw,60px);font-weight:800;line-height:1.02;letter-spacing:-.025em;margin-top:6px}
+.hero p.lead{color:var(--muted);font-size:18px;max-width:52ch;margin:14px 0 22px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:700;text-decoration:none;font-size:16px;min-height:48px}
+.btn-primary{background:var(--sky);color:var(--navy)}
+.btn-primary:hover{background:#7DD3FC}
+.btn-ghost{color:var(--fg);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--sky)}
+
+/* Servicios */
+.intro{padding-block:40px 8px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:end}
+.intro h2{font-size:32px;font-weight:800;letter-spacing:-.02em}
+.intro p{color:var(--muted);margin:0;max-width:46ch}
+.cat{padding-block:28px 8px}
+.cat h3{font-size:14px;font-family:var(--mono);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);padding-bottom:10px;border-bottom:2px solid var(--sky)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 130px 190px;gap:16px;align-items:baseline;padding-block:16px;border-bottom:1px solid var(--line)}
+.row .name{font-weight:700;font-size:18px}
+.row .desc{color:var(--muted);font-size:15px;margin-top:2px}
+.row .time,.row .price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px}
+.row .time{color:var(--muted)}
+.row .price{text-align:right;font-weight:500}
+.colhead{display:grid;grid-template-columns:minmax(0,1fr) 130px 190px;gap:16px;padding-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.colhead span:last-child{text-align:right}
+.cot{font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.cot:hover{text-decoration:underline}
+
+/* Preferente + condiciones */
+.pref{margin-block:48px 0;background:var(--sky);color:var(--navy);border-radius:20px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+.pref h2{font-size:26px;font-weight:800;letter-spacing:-.015em}
+.pref p{margin:6px 0 0;max-width:58ch}
+.pref .big{font-family:var(--mono);font-size:40px;font-weight:500;line-height:1}
+.pref .big small{display:block;font-size:13px;margin-top:6px;text-align:right}
+.cond{padding-block:48px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.cond h2{font-size:24px;font-weight:800;margin-bottom:12px}
+.cond ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--muted)}
+.cond li strong{color:var(--fg)}
+.contact{border-top:1px solid var(--line);padding-block:40px 56px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+.contact dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.contact dt{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.contact dd{margin:0;font-weight:500;user-select:all}
+.foot{color:var(--muted);font-size:13px;padding-bottom:32px}
+
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;padding-block:36px}
+  .logo{width:88px;height:88px}.logo span{font-size:40px}.logo i{width:22px;height:22px}
+  .colhead{display:none}
+  .row{grid-template-columns:minmax(0,1fr) auto;gap:4px 16px}
+  .row .info{grid-column:1/-1}
+  .row .time::before{content:"Plazo: "}
+  .pref{grid-template-columns:1fr}
+  .pref .big small{text-align:left}
+  .cond{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){.btn{transition:background .15s,border-color .15s}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="logo" aria-hidden="true"><span>mc</span><i></i></div>
+    <div>
+      <div class="eyebrow">Iquique · Chile</div>
+      <h1>MC Diseño &amp; Marketing</h1>
+      <p class="lead">Páginas web, catálogos con pedido por WhatsApp, menús con QR, apps y diseños para redes. Hecho por Matías Condori para negocios que quieren vender más.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://wa.me/56974629597?text=Hola%20Mat%C3%ADas%2C%20quiero%20cotizar%20un%20trabajo" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        <a class="btn btn-ghost" href="#servicios">Ver precios</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="servicios" aria-labelledby="t-serv">
+    <div class="intro">
+      <h2 id="t-serv">Servicios y precios</h2>
+      <p>Cada servicio tiene un rango: el mínimo es la versión simple y el máximo la más completa. Plazos en días hábiles.</p>
+    </div>
+
+    <div class="cat">
+      <h3>Sitios web</h3>
+      <div class="colhead" aria-hidden="true"><span>Servicio</span><span>Plazo</span><span>Precio (CLP)</span></div>
+      <div class="row"><div class="info"><div class="name">Landing page</div><div class="desc">Una página de presentación o venta con botón de WhatsApp.</div></div><div class="time">3–5 días</div><div class="price">$80.000 – $120.000</div></div>
+      <div class="row"><div class="info"><div class="name">Catálogo con pedido por WhatsApp</div><div class="desc">Hasta 50 productos, carrito y precios editables desde Google Sheets.</div></div><div class="time">7–10 días</div><div class="price">$150.000 – $250.000</div></div>
+      <div class="row"><div class="info"><div class="name">Sitio informativo</div><div class="desc">Hasta 5 secciones para presentar tu empresa.</div></div><div class="time">10–15 días</div><div class="price">$180.000 – $300.000</div></div>
+      <div class="row"><div class="info"><div class="name">Menú digital con QR</div><div class="desc">Para restaurantes, con código QR listo para imprimir.</div></div><div class="time">3–5 días</div><div class="price">$60.000 – $120.000</div></div>
+      <div class="row"><div class="info"><div class="name">Productos extra</div><div class="desc">Cada 50 productos adicionales en el catálogo.</div></div><div class="time">—</div><div class="price">$20.000</div></div>
+    </div>
+
+    <div class="cat">
+      <h3>Apps y extras</h3>
+      <div class="row"><div class="info"><div class="name">App instalable</div><div class="desc">Tu sitio se instala en el celular como una app.</div></div><div class="time">+2–5 días</div><div class="price">+ $50.000</div></div>
+      <div class="row"><div class="info"><div class="name">Asesor guiado</div><div class="desc">Preguntas que recomiendan el producto ideal al cliente.</div></div><div class="time">+2–5 días</div><div class="price">+ $40.000 – $60.000</div></div>
+      <div class="row"><div class="info"><div class="name">Asistente con IA</div><div class="desc">Chat inteligente para tu negocio. El uso mensual se paga aparte.</div></div><div class="time">10–15 días</div><div class="price">Desde $150.000</div></div>
+      <div class="row"><div class="info"><div class="name">Dominio .cl</div><div class="desc">Gestión de tu dirección web propia.</div></div><div class="time">—</div><div class="price">NIC + $15.000</div></div>
+    </div>
+
+    <div class="cat">
+      <h3>Marketing y diseño</h3>
+      <div class="row"><div class="info"><div class="name">Pieza suelta</div><div class="desc">Post, flyer o historia.</div></div><div class="time">1–2 días</div><div class="price">$8.000 – $15.000</div></div>
+      <div class="row"><div class="info"><div class="name">Textos para anuncios</div><div class="desc">3 versiones de copy listas para publicar.</div></div><div class="time">1–2 días</div><div class="price">$25.000</div></div>
+      <div class="row"><div class="info"><div class="name">Pack de plantillas Canva</div><div class="desc">8 diseños editables con tu marca.</div></div><div class="time">3–5 días</div><div class="price">$40.000 – $60.000</div></div>
+      <div class="row"><div class="info"><div class="name">Embudo de venta</div><div class="desc">Estrategia y textos de cada paso, del anuncio a la venta.</div></div><div class="time">5–7 días</div><div class="price">$80.000 – $150.000</div></div>
+      <div class="row"><div class="info"><div class="name">Redes sociales mensual</div><div class="desc">1 red, 8 publicaciones e historias. Calendario en la primera semana.</div></div><div class="time">Mensual</div><div class="price">$120.000 – $180.000</div></div>
+    </div>
+
+    <div class="cat">
+      <h3>Mantención mensual</h3>
+      <div class="row"><div class="info"><div class="name">Básica</div><div class="desc">Cambios menores, hasta 1 hora al mes.</div></div><div class="time">48 h</div><div class="price">$15.000 – $25.000</div></div>
+      <div class="row"><div class="info"><div class="name">Completa</div><div class="desc">Cambios, soporte y respaldo.</div></div><div class="time">48 h</div><div class="price">$35.000 – $50.000</div></div>
+    </div>
+  </section>
+
+  <section class="pref" aria-labelledby="t-pref">
+    <div>
+      <h2 id="t-pref">¿Lo necesitas antes? Entrega preferente</h2>
+      <p>Si hay muchos pedidos en proceso, pagas un recargo y tu trabajo pasa al primer lugar de la fila.</p>
+    </div>
+    <div class="big">+30%<small>mínimo $20.000</small></div>
+  </section>
+
+  <section class="cond">
+    <div>
+      <h2>Cómo trabajamos</h2>
+      <ul>
+        <li><strong>Pago:</strong> 50% al inicio y 50% al entregar.</li>
+        <li><strong>Cambios:</strong> incluye 2 rondas; los extra se cobran aparte.</li>
+        <li><strong>Material:</strong> tú entregas textos, fotos y logo. El plazo corre desde que los recibo.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Valores</h2>
+      <ul>
+        <li><strong>Brutos:</strong> se emite boleta de honorarios.</li>
+        <li><strong>Empresas:</strong> retienen el 15,25% al pagar.</li>
+        <li><strong>Cotización:</strong> válida por 15 días.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="contact">
+    <dl>
+      <dt>WhatsApp</dt><dd>+56 9 7462 9597</dd>
+      <dt>Instagram</dt><dd><a href="https://instagram.com/matti_w.w" target="_blank" rel="noopener">@matti_w.w</a></dd>
+      <dt>Correo</dt><dd>mtcj.matti@gmail.com</dd>
+    </dl>
+    <a class="btn btn-primary" href="https://wa.me/56974629597?text=Hola%20Mat%C3%ADas%2C%20quiero%20cotizar%20un%20trabajo" target="_blank" rel="noopener">Escríbeme y cotizamos</a>
+  </footer>
+  <p class="foot">Valores en pesos chilenos, actualizados a octubre de 2026.</p>
+</div>
+</body>
+</html>
